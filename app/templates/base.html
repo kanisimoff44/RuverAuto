@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Рувер-Авто</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', path='images/logo.png') }}">
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Open+Sans:wght@400;600&display=swap"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="header">
+        <a href="#" class="logo-link">
+          <img src="{{ url_for('static', path='images/white.png') }}" alt="Рувер-Авто" class="logo" />
+        </a>
+      
+        <nav class="navigation">
+          <li><a href="#" class="nav-link">Главная</a></li>
+          <li><a href="#" class="nav-link">Каталог товаров</a></li>
+        </nav>
+      </div>
+    </header>
+
+    {% block main %} {% endblock main %} 
+    {% block content %} {% endblock content %}
+
+    <div class="footer">
+      <p>
+        &copy; 2024 Частичное или полное копирование информации с данного сайта
+        для распространения на других ресурсах, в том числе и бумажных, строго
+        запрещено. Все тексты и изображения являются собственностью сайта
+      </p>
+    </div>
+  </body>
+</html>

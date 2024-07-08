@@ -1,0 +1,126 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex; /* для расположения элементов */
+  justify-content: space-between; /* распределение элементов с учетом доступного пространства */
+  align-items: center; /* выравнивание элементов по центру по вертикали */
+  padding: 10px 20px; /* отступы внутри header */
+}
+
+.header,
+.footer {
+  background-color: #353535;
+  color: #fff;
+  text-align: left;
+  padding: 5px 0;
+  /* height: 10vh; */
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.main-content {
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+}
+
+.catalog-placeholder {
+  background-color: #eaeaea;
+  color: #b2b2b2;
+  text-align: center;
+  padding: 50px 0;
+  margin: 20px 0;
+  font-size: 40px;
+}
+
+.navigation {
+  font-size: 26px;
+  display: flex; /* Ссылки в ряд */
+  list-style: none; /* Убрать стандартные маркеры списка */
+  margin: 0;
+  padding: 0;
+}
+
+.navigation li {
+  margin-left: 10vh; /* Расстояние между ссылками */
+}
+
+.navigation li:first-child {
+  margin-left: 70vh; /* У первой ссылки отступ слева не нужен */
+}
+
+
+.nav-link {
+  display: inline-block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.nav-link:hover {
+  color: #b2b2b2;
+}
+
+.active {
+  background-color: #b2b2b2;
+}
+
+.logo {
+  display: block;
+  margin: 2px;
+  height: 10vh;
+}
+
+.description {
+  font-family: "Roboto", serif;
+  font-weight: 100;
+  font-size: 28px;
+  line-height: 1.2;
+  color: #333;
+  text-align: center;
+}
+
+h1 {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  color: #333;
+  text-align: center;
+}
+
+.contact-info-first{
+  border-top: 2px solid #9c9c9c;
+  width: 610px;
+  position: fixed;
+  left: 10px;
+  bottom: 7%;
+  background: #f5f5f5;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.contact-info-second {
+  position: fixed;
+  left: 350px;
+  bottom: 7%;
+  background: #f5f5f5;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.contact-info-first h2 {
+  margin-left: 15vh;
+  margin-bottom: 25px;
+}
