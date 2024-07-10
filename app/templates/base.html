@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Рувер-Авто</title>
     <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
-    <link rel="icon" href="{{ url_for('static', path='images/logo.png') }}">
+    <link rel="icon" href="{{ url_for('static', path='images/black.png') }}">
     <!-- Google Fonts -->
     <link
       rel="stylesheet"
@@ -16,13 +16,13 @@
   <body>
     <header>
       <div class="header">
-        <a href="#" class="logo-link">
+        <a href="/pages/main" class="logo-link">
           <img src="{{ url_for('static', path='images/white.png') }}" alt="Рувер-Авто" class="logo" />
         </a>
       
         <nav class="navigation">
-          <li><a href="#" class="nav-link">Главная</a></li>
-          <li><a href="#" class="nav-link">Каталог товаров</a></li>
+          <li><a href="/pages/main" class="nav-link">Главная</a></li>
+          <li><a href="/pages/products" class="nav-link">Каталог товаров</a></li>
         </nav>
       </div>
     </header>

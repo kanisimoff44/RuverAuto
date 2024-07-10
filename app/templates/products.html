@@ -2,7 +2,12 @@
 
 {% block content %}
 <div class="catalog-placeholder">
-  <h2>Каталог товаров</h2>
+  <h2>Наши продукты</h2>
+  <ul>
+    {% for product in products %}
+      <li>{{ product.name }}: {{ product.description }}</li>
+    {% endfor %}
+  </ul>
   <p>Раздел в разработке...</p>
 </div>
 {% endblock content %}

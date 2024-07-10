@@ -1,4 +1,5 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
+from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 router = APIRouter(
@@ -10,20 +11,20 @@ router = APIRouter(
 templates = Jinja2Templates(directory="app/templates/")
 
 
-@router.get("/main")
-async def main_page():
+@router.get("/main", response_class=HTMLResponse)
+async def main_page(request: Request):
     """
     Main page
     """
-    return templates.TemplateResponse("main.html", {"request": {}})
+    return templates.TemplateResponse("main.html", {"request": request})
 
 
-@router.get("/products")
-async def read_products():
+@router.get("/products", response_class=HTMLResponse)
+async def read_products(request: Request):
     """
     Get all products
 
     Returns:
         list[Products]: list of products
     """
-    return templates.TemplateResponse("index.html", {"request": {}, "products": []})
+    return templates.TemplateResponse("products.html", {"request": request, "products": []})
