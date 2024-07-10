@@ -18,6 +18,9 @@ app.include_router(products_router)
 
 app.include_router(pages_router)
 
+admin = Admin(app, engine)#, authentication_backend=authentication_backend)
+admin.add_view(ProductsAdmin)
+
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 @app.middleware("http")
@@ -30,6 +33,3 @@ async def add_process_time_header(request: Request, call_next):
         "process_time": round(process_time, 4)
     })
     return response
-
-admin = Admin(app, engine)#, authentication_backend=authentication_backend)
-admin.add_view(ProductsAdmin)
