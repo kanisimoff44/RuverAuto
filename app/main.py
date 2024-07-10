@@ -1,7 +1,10 @@
 import time
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
+from sqladmin import Admin
 
+from app.database import engine
+from app.admin.views import ProductsAdmin
 from app.logger import logger
 from app.products.router import router as products_router
 from app.pages.router import router as pages_router
@@ -27,3 +30,6 @@ async def add_process_time_header(request: Request, call_next):
         "process_time": round(process_time, 4)
     })
     return response
+
+admin = Admin(app, engine)#, authentication_backend=authentication_backend)
+admin.add_view(ProductsAdmin)
