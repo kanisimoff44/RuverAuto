@@ -9,25 +9,36 @@
     <!-- Google Fonts -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Open+Sans:wght@400;600&display=swap"
-    />
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Open+Sans:wght@400;600&display=swap"/>
   </head>
 
   <body>
     <header>
       <div class="header">
-        <a href="/pages/main" class="logo-link">
-          <img src="{{ url_for('static', path='images/white.png') }}" alt="Рувер-Авто" class="logo" />
-        </a>
-      
+        <div class="logo">
+          <a href="/pages/main" class="logo-link">
+            <img src="{{ url_for('static', path='images/white.png') }}" alt="Рувер-Авто" class="logo">
+          </a>
+        </div>
+        <div class="phone-icon">
+          <img src="{{ url_for('static', path='images/phone.png') }}" alt="phone-icon" class="phone_icon">
+          <h1>8 800 555 35 35</h1>
+        </div>
+        <div class="email-icon">
+          <img src="{{ url_for('static', path='images/email.png')}}" alt="email-icon" class="email_icon">
+          <h2>email@ruver-auto.ru</h2>
+        </div>
+      </div>
+      <div class="nav-menu">
         <nav class="navigation">
           <li><a href="/pages/main" class="nav-link">Главная</a></li>
-          <li><a href="/pages/products" class="nav-link">Каталог товаров</a></li>
+          <!-- <li><a href="/pages/products" class="nav-link">Каталог товаров</a></li> -->
         </nav>
       </div>
     </header>
-
-    {% block main %} {% endblock main %} 
+    <main>
+      {% block main %} {% endblock main %} 
+    </main>
     {% block content %} {% endblock content %}
 
     <div class="footer">

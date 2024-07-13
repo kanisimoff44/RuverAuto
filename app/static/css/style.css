@@ -6,14 +6,115 @@ body {
   padding: 0;
 }
 
+/* HEADER */
 .header {
+  background-color: #e9e9e9;
   display: flex; /* для расположения элементов */
   justify-content: space-between; /* распределение элементов с учетом доступного пространства */
   align-items: center; /* выравнивание элементов по центру по вертикали */
-  padding: 10px 20px; /* отступы внутри header */
+  padding: 1px 1px; /* отступы внутри блока */
 }
 
-.header,
+.logo {
+  display: block;
+  margin: 0;
+  height: 15vh;
+}
+
+.phone-icon {
+  display: flex;
+  align-items: center;
+  margin-left: 55%;
+}
+
+.phone-icon img {
+  width: 10%;
+  height: 10%;
+}
+
+.phone-icon h1 {
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+.email-icon {
+  display: flex;
+  align-items: center;
+}
+
+.email-icon img {
+  width: 10%;
+  height: 10%;
+}
+
+.email-icon h2 {
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+.nav-menu {
+  background-color: #353535;
+  display: flex; /* для расположения элементов */
+  justify-content: space-between; /* распределение элементов с учетом доступного пространства */
+  align-items: center; /* выравнивание элементов по центру по вертикали */
+  padding: 12px 0; /* отступы внутри header */
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+header .contacts {
+  float: right;
+  text-align: right;
+}
+
+.products {
+  background-color: #fff;
+  padding: 20px 0;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  margin: 10px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+}
+
+.product-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+.btn-more {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  color: #fff;
+  background-color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn-more:hover {
+  background-color: #555;
+}
+
+
+
+
+/* FOOTER */
 .footer {
   background-color: #353535;
   color: #fff;
@@ -57,9 +158,8 @@ body {
 }
 
 .navigation li:first-child {
-  margin-left: 70vh; /* У первой ссылки отступ слева не нужен */
+  margin-left: 80vh; /* У первой ссылки отступ слева не нужен */
 }
-
 
 .nav-link {
   display: inline-block;
@@ -76,12 +176,6 @@ body {
   background-color: #b2b2b2;
 }
 
-.logo {
-  display: block;
-  margin: 2px;
-  height: 10vh;
-}
-
 .description {
   font-family: "Roboto", serif;
   font-weight: 100;
@@ -94,7 +188,6 @@ body {
 h1 {
   font-family: "Roboto Slab", serif;
   font-weight: 700;
-  font-size: 36px;
   line-height: 1.2;
   color: #333;
   text-align: center;
