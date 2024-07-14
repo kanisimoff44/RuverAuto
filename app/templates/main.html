@@ -14,7 +14,7 @@
     <div class="product-list">
       {% for product in products %}
         <div class="product-item">
-          <img src="{{ url_for('static', path='images/black.png') }}" alt="Фото продукта">
+          <img src="{{ url_for('static', path='images/' + product.image_id|string + '.webp') }}" alt="Фото продукта">
           <h3>{{ product.name }}</h3>
           <p>{{ product.description[:100] }}</p>
           <a href="/pages/products/{{ product.id }}" class="btn-more">Подробнее</a>

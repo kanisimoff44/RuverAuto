@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from fastapi_cache.decorator import cache
 
 from app.products.dao import ProductsDAO
 from app.products.schemas import SProductsInfo, SProductDetail
@@ -23,6 +24,7 @@ async def get_all_products() -> list[SProductsInfo]:
 
 
 @router.get("/{product_id}")
+@cache(expire=3600)
 async def get_product_by_id(product_id: int) -> SProductDetail:
     """
     Get product by id
