@@ -19,7 +19,7 @@ class ProductsDAO(BaseDAO):
                     id=product.id,
                     name=product.name,
                     description=product.description,
-                    short_description=product.description[:100] + '...',
+                    short_description=product.description[:50] + '...',
                     image_id=product.image_id
                 ) for product in result
             ]

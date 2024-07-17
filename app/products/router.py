@@ -1,3 +1,4 @@
+import os
 from fastapi import APIRouter
 from fastapi_cache.decorator import cache
 
@@ -20,6 +21,13 @@ async def get_all_products() -> list[SProductsInfo]:
         list[Products]: list of products
     """
     products = await ProductsDAO.get_all()
+    
+    image_directory = "app/static/images/"
+    
+    for product in products:
+        if not os.path.exists(f"{image_directory}{product.image_id}.webp"):
+            product.image_id = None
+    
     return products
 
 
