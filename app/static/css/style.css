@@ -1,9 +1,13 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #333;
-  background-color: #f5f5f5;
   margin: 0;
   padding: 0;
+  /* display: flex; */
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: #f5f5f5;
 }
 
 /* body { */
@@ -83,7 +87,7 @@ body::-webkit-scrollbar {
 }
 
 .navigation li:first-child {
-  margin-left: 80vh; /* У первой ссылки отступ слева не нужен */
+  margin-left: 50vh; /* У первой ссылки отступ слева не нужен */
 }
 
 .nav-link {
@@ -112,6 +116,14 @@ body::-webkit-scrollbar {
   font-family: "Roboto", serif;
   font-weight: 100;
   font-size: 28px;
+  line-height: 1.2;
+  color: #333;
+  text-align: center;
+}
+
+.main-content h1 {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
   line-height: 1.2;
   color: #333;
   text-align: center;
@@ -190,40 +202,59 @@ body::-webkit-scrollbar {
 }
 
 /* PRODUCT DETAIL */
-.product-container {
-  background-color: #eaeaea;
-  color: #b2b2b2;
-  text-align: center;
-  padding-top: 1px;
-  margin: 20px auto;
-  font-size: 40px;
-  display: grid;
-  align-content: normal;
-  justify-content: normal;
+.product-content {
+  display: flex;
+  justify-content: center;
   align-items: normal;
-  justify-items: normal;
+  flex-direction: row;
 }
 
-.product-container img {
-  max-width: 100%;
-  height: auto;
+.content-container {
+  max-width: 75%;
+  margin: 40px auto;
+  width: 100%;
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  margin-left: 10px;
-
 }
 
-h1 {
+.product-header {
   font-family: "Roboto Slab", serif;
   font-weight: 700;
   line-height: 1.2;
+  font-size: 30px;
   color: #333;
   text-align: center;
+  margin-bottom: 20px;
 }
 
-/* h2 {
-  font-family: "Roboto Slab", serif;
-  font-weight: 400;
-  line-height: 1.2;
-  color: #333;
+.product-left {
+  flex-shrink: 0;
+  margin: 50px;
+}
+
+.product-left img {
+  max-width: 750px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.product-right {
   text-align: center;
-} */
+  max-width: 700px;
+  margin: 50px;
+}
+
+.product-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.product-description {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #6b6b6b;
+}

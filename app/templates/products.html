@@ -1,14 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="product-container">
-  <h2>Подробная информация о продукте</h2>
-  {% if product.image_id %}
-    <img src="{{ url_for('static', path='images/' + product.image_id|string + '.webp')}}" alt="Фото продукта">
-  {% else %}
-    <img src="{{ url_for('static', path='images/coming_soon.png')}}" alt="Фото продукта">
-  {% endif %}
-  <h3>"{{ product.name }}"</h3>
-  <p>{{ product.description }}</p>
+<div class="content-container">
+  <h2 class="product-header">Подробная информация о продукте</h2>
+  <div class="product-content">
+    <div class="product-left">
+      {% if product.image_id %}
+        <img src="{{ url_for('static', path='images/' + product.image_id|string + '.webp')}}" alt="Фото продукта">
+      {% else %}
+        <img src="{{ url_for('static', path='images/coming_soon.png')}}" alt="Фото продукта">
+      {% endif %}
+    </div>
+    <div class="product-right">
+      <h1 class="product-title">{{ product.name }}</h1>
+      <p class="product-description">{{ product.description }}</p>
+    </div>
+  </div>
 </div>
 {% endblock content %}
