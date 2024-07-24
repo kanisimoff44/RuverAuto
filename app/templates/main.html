@@ -1,30 +1,29 @@
 {% extends "base.html" %} 
 
 {% block main %}
-<div class="main-content">
-  <h1>ООО "Рувер-Авто"</h1>
-  <p class="description">
+<div class="main__about-us">
+  <h1 class="main__title">ООО "Рувер-Авто"</h1>
+  <p class="main__description">
     Продажа б/у грузовой, строительной техники, прицепов полуприцепов, выкуп
     автомобилей Урал.
   </p>
 </div>
-<section class="products">
-  <div class="container">
-    <h2>Продукты</h2>
-    <div class="product-list">
-      {% for product in products %}
-        <div class="product-item">
-          {% if product.image_id %}
-            <img src="{{ url_for('static', path='images/' + product.image_id|string + '.webp')}}" alt="Фото продукта">
-          {% else %}
-            <img src="{{ url_for('static', path='images/coming_soon.png')}}" alt="Фото продукта">
-          {% endif %}
-          <h3>{{ product.name }}</h3>
-          <p>{{ product.short_description }}</p>
-          <a href="/pages/products/{{ product.id }}" class="btn-more">Подробнее</a>
-        </div>
-      {% endfor %}
-    </div>
+
+<div class="main__content-container">
+  <h2 class="content-container-title">Продукты</h2>
+  <div class="content-container-items">
+    {% for product in products %}
+      <div class="product-item">
+        {% if product.image_id %}
+          <img src="{{ url_for('static', path='images/' + product.image_id|string + '.webp')}}" alt="Фото продукта">
+        {% else %}
+          <img src="{{ url_for('static', path='images/coming_soon.png')}}" alt="Фото продукта">
+        {% endif %}
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.short_description }}</p>
+        <a href="/pages/products/{{ product.id }}" class="btn-more">Подробнее</a>
+      </div>
+    {% endfor %}
   </div>
-</section>
+</div>
 {% endblock main %}
