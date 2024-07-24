@@ -96,6 +96,7 @@ body::-webkit-scrollbar {
   justify-content: space-around; /* распределение элементов с учетом доступного пространства */
   align-items: center; /* выравнивание элементов по центру по вертикали */
   padding: 12px 0; /* отступы внутри header */
+  border-radius: 10px;
 }
 
 .header__nav-item {
@@ -170,7 +171,7 @@ body::-webkit-scrollbar {
   justify-content: center;
 }
 
-.product-item {
+.content-item {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -185,7 +186,7 @@ body::-webkit-scrollbar {
   margin-bottom: 20px;
 }
 
-.product-item img {
+.content-item img {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
@@ -207,31 +208,7 @@ body::-webkit-scrollbar {
   background-color: #555;
 }
 
-/* FOOTER */
-.footer {
-  background-color: #353535;
-  color: #fff;
-  text-align: left;
-  padding: 5px 0;
-  /* height: 10vh; */
-}
-
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-}
-
-/* PRODUCT DETAIL */
-.product-content {
-  display: flex;
-  justify-content: center;
-  align-items: normal;
-  flex-direction: row;
-}
-
-.content-container {
+.detail {
   max-width: 75%;
   margin: 40px auto;
   width: 100%;
@@ -242,7 +219,7 @@ body::-webkit-scrollbar {
   border-radius: 10px;
 }
 
-.product-header {
+.detail__title {
   font-family: "Roboto Slab", serif;
   font-weight: 700;
   line-height: 1.2;
@@ -252,31 +229,47 @@ body::-webkit-scrollbar {
   margin-bottom: 20px;
 }
 
-.product-left {
+.detail .product-content {
+  display: flex;
+  justify-content: center;
+  align-items: normal;
+  flex-direction: row;
+}
+
+.detail .product-content .product-img {
   flex-shrink: 0;
   margin: 50px;
 }
 
-.product-left img {
+.detail .product-content .product-img img {
   max-width: 750px;
   height: auto;
   border-radius: 10px;
 }
 
-.product-right {
+.detail .product-detail {
   text-align: center;
   max-width: 700px;
   margin: 50px;
 }
 
-.product-title {
+.detail .product-detail .product-name {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-.product-description {
+.detail .product-detail .product-description {
   font-size: 18px;
   line-height: 1.5;
   color: #6b6b6b;
+}
+
+.footer {
+  padding: 5px 0;
+  width: 100%;
+  height: auto;
+  background-color: #353535;
+  color: #fff;
+  position: relative;
 }

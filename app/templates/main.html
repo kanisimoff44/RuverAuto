@@ -13,7 +13,7 @@
   <h2 class="content-container-title">Продукты</h2>
   <div class="content-container-items">
     {% for product in products %}
-      <div class="product-item">
+      <div class="content-item">
         {% if product.image_id %}
           <img src="{{ url_for('static', path='images/' + product.image_id|string + '.webp')}}" alt="Фото продукта">
         {% else %}
