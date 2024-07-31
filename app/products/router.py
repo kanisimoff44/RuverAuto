@@ -44,4 +44,9 @@ async def get_product_by_id(product_id: int) -> SProductDetail:
         SProductsInfo: _description_
     """
     product = await ProductsDAO.get_by_id(product_id)
+    
+    image_directory = "app/static/images/"
+    if not os.path.exists(f"{image_directory}{product.image_id}.webp"):
+        product.image_id = None
+    
     return product

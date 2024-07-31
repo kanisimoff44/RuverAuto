@@ -14,15 +14,21 @@ class ProductsDAO(BaseDAO):
         async with async_session_maker() as session:
             query = select(cls.model.__table__.columns).filter_by(**filter_by)
             result = await session.execute(query)
-            return [
-                SProductsInfo(
-                    id=product.id,
-                    name=product.name,
-                    description=product.description,
-                    short_description=product.description[:50] + '...',
-                    image_id=product.image_id
-                ) for product in result
-            ]
+            products: list = []
+            for product in result:
+                short_description: str = "Нет описания"
+                if product.description:
+                    short_description = product.description[:50] + '...'
+                products.append(
+                    SProductsInfo(
+                        id=product.id,
+                        name=product.name,
+                        description=product.description,
+                        short_description=short_description,
+                        image_id=product.image_id
+                    )
+                )
+            return products
 
     @classmethod
     async def get_by_id(cls, product_id: int):
