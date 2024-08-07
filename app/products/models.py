@@ -1,5 +1,6 @@
 from typing import Optional
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
 
@@ -10,9 +11,20 @@ class Products(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str]
     description: Mapped[Optional[str]]
+    image_id: Mapped[int]
+    is_active: Mapped[bool]
+
+    characteristics: Mapped[list["ProductsInfo"]] = relationship(back_populates="product")
+
+
+class ProductsInfo(Base):
+    __tablename__ = "products_info"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    product_id: Mapped[int] = mapped_column(ForeignKey("products.id"))
     brand: Mapped[Optional[str]]
     condition: Mapped[Optional[str]]
-    year: Mapped[Optional[str]]
+    year: Mapped[Optional[int]]
     model: Mapped[Optional[str]]
     target: Mapped[Optional[str]]
     lifting_capacity: Mapped[Optional[str]]
@@ -30,4 +42,5 @@ class Products(Base):
     type_of_TS: Mapped[Optional[str]]
     engine_volume: Mapped[Optional[str]]
     type_of_fuel: Mapped[Optional[str]]
-    image_id: Mapped[int]
+    
+    product: Mapped["Products"] = relationship(back_populates="characteristics")

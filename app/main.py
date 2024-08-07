@@ -9,6 +9,7 @@ from sqladmin import Admin
 
 from app.database import engine
 from app.admin.views import ProductsAdmin
+from app.admin.views import ProductsInfoAdmin
 from app.config import settings
 from app.logger import logger
 from app.products.router import router as products_router
@@ -42,6 +43,7 @@ app.include_router(images_router)
 
 admin = Admin(app, engine)#, authentication_backend=authentication_backend)
 admin.add_view(ProductsAdmin)
+admin.add_view(ProductsInfoAdmin)
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
