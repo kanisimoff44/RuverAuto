@@ -15,7 +15,7 @@
     {% for product in products %}
       <div class="content-item">
         {% if product.image_id %}
-          <img src="{{ url_for('static', path='images/' + product.image_id|string + '.webp')}}" alt="Фото продукта">
+          <img src="{{ url_for('static', path='images/' + product.image_name|string + '.webp')}}" alt="Фото продукта">
         {% else %}
           <img src="{{ url_for('static', path='images/coming_soon.png')}}" alt="Фото продукта">
         {% endif %}

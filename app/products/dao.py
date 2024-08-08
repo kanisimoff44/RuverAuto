@@ -25,7 +25,7 @@ class ProductsDAO(BaseDAO):
                         name=product.name,
                         description=product.description,
                         short_description=short_description,
-                        image_id=product.image_id
+                        image_name=product.image_name
                     )
                 )
             return products
