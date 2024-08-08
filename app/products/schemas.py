@@ -13,3 +13,4 @@ class SProducts(BaseModel):
 class SProductsInfo(SProducts):
     short_description: Optional[str]
     image_name: str
+    is_active: bool

@@ -17,6 +17,9 @@ class Products(Base):
     is_active: Mapped[bool]
 
     characteristics: Mapped[list["ProductsInfo"]] = relationship(back_populates="product")
+    
+    def __str__(self):
+        return f"Товар: {self.name}"
 
 
 class ProductsInfo(Base):
@@ -28,3 +31,6 @@ class ProductsInfo(Base):
     value_of_characteristic: Mapped[str]
     
     product: Mapped["Products"] = relationship(back_populates="characteristics")
+
+    def __str__(self):
+        return f"{self.name_of_characteristic}: {self.value_of_characteristic}"

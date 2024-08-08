@@ -13,16 +13,18 @@
   <h2 class="content-container-title">Продукты</h2>
   <div class="content-container-items">
     {% for product in products %}
-      <div class="content-item">
-        {% if product.image_id %}
-          <img src="{{ url_for('static', path='images/' + product.image_name|string + '.webp')}}" alt="Фото продукта">
-        {% else %}
-          <img src="{{ url_for('static', path='images/coming_soon.png')}}" alt="Фото продукта">
-        {% endif %}
-        <h3>{{ product.name }}</h3>
-        <p>{{ product.short_description }}</p>
-        <a href="/pages/products/{{ product.id }}" class="btn-more">Подробнее</a>
-      </div>
+      {% if product.is_active is true %}
+        <div class="content-item">
+          {% if product.image_name %}
+            <img src="{{ url_for('static', path='images/' + product.image_name|string + '.webp')}}" alt="Фото продукта">
+          {% else %}
+            <img src="{{ url_for('static', path='images/coming_soon.png')}}" alt="Фото продукта">
+          {% endif %}
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.short_description }}</p>
+          <a href="/pages/products/{{ product.id }}" class="btn-more">Подробнее</a>
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
 </div>

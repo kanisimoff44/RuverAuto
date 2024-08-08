@@ -5,12 +5,12 @@ from app.admin.columns import (
     column_labels_for_products,
     column_labels_for_products_info,
     form_columns_for_products,
-    form_columsn_for_products_info,
+    form_columsn_for_products_info
 )
 
 
 class ProductsAdmin(ModelView, model = Products):
-    column_list = [c.name for c in Products.__table__.c]
+    column_list = [c.name for c in Products.__table__.c] + [Products.characteristics]
     name = "Товар"
     name_plural = "Товары"
     icon = "fa-solid fa-car"
@@ -20,7 +20,7 @@ class ProductsAdmin(ModelView, model = Products):
 
 
 class ProductsInfoAdmin(ModelView, model = ProductsInfo):
-    column_list = [c.name for c in ProductsInfo.__table__.c]
+    column_list = [c.name for c in ProductsInfo.__table__.c] + [ProductsInfo.product]
     name = "Характеристика товара"
     name_plural = "Характеристики товаров"
     icon = "fa-solid fa-star"
