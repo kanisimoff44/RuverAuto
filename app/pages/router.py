@@ -3,6 +3,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from app.products.router import get_all_products, get_product_by_id
+from app.products.schemas import SProductsAll, SProductsDetail
 
 router = APIRouter(
     prefix="/pages",

@@ -1,7 +1,7 @@
 from app.dao.base import BaseDAO
 from app.database import async_session_maker
 from app.products.models import Products
-from app.products.schemas import SProductsInfo
+from app.products.schemas import SProductsAll
 
 from sqlalchemy import select
 
@@ -10,9 +10,9 @@ class ProductsDAO(BaseDAO):
     model = Products
     
     @classmethod
-    async def get_all(cls, **filter_by):
+    async def get_all(cls):
         async with async_session_maker() as session:
-            query = select(cls.model.__table__.columns).filter_by(**filter_by)
+            query = select(cls.model.__table__.columns)
             result = await session.execute(query)
             products: list = []
             for product in result:
@@ -20,7 +20,7 @@ class ProductsDAO(BaseDAO):
                 if product.description:
                     short_description = product.description[:50] + '...'
                 products.append(
-                    SProductsInfo(
+                    SProductsAll(
                         id=product.id,
                         name=product.name,
                         description=product.description,

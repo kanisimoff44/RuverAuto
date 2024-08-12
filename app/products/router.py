@@ -1,10 +1,8 @@
-import os
 from fastapi import APIRouter
-from fastapi_cache.decorator import cache
 
 from app.products.dao import ProductsDAO
-from app.products.schemas import SProductsInfo
-from app.products.labels import column_labels
+from app.products.schemas import SProductsAll, SProductsDetail
+from app.products.utils import check_img
 
 router = APIRouter(
     prefix="/products",
@@ -12,16 +10,9 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
-def check_img(product: SProductsInfo):
-    image_directory = "app/static/images/"
-    if not os.path.exists(f"{image_directory}{product.image_name}.webp"):
-        product.image_name = None
-    
-    return product.image_name
-
 
 @router.get("/")
-async def get_all_products() -> list[SProductsInfo]:
+async def get_all_products() -> list[SProductsAll]:
     """
     Get all products
 
@@ -38,7 +29,7 @@ async def get_all_products() -> list[SProductsInfo]:
 
 @router.get("/{product_id}")
 # @cache(expire=3600)
-async def get_product_by_id(product_id: int) -> SProductsInfo:
+async def get_product_by_id(product_id: int) -> SProductsDetail:
     """
     Get product by id
 
