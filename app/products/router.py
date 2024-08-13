@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+# from fastapi_cache.decorator import cache
 
 from app.products.dao import ProductsDAO
 from app.products.schemas import SProductsAll, SProductsDetail
@@ -20,7 +21,6 @@ async def get_all_products() -> list[SProductsAll]:
         list[Products]: list of products
     """
     products = await ProductsDAO.get_all()
-
     for product in products:
         check_img(product)
     
@@ -41,5 +41,5 @@ async def get_product_by_id(product_id: int) -> SProductsDetail:
     """
     product = await ProductsDAO.get_by_id(product_id)
     check_img(product)
-    
+
     return product

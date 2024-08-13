@@ -4,6 +4,7 @@ from app.products.models import Products
 from app.products.schemas import SProductsAll
 
 from sqlalchemy import select
+from sqlalchemy.orm import joinedload
 
 
 class ProductsDAO(BaseDAO):
@@ -34,6 +35,11 @@ class ProductsDAO(BaseDAO):
     @classmethod
     async def get_by_id(cls, product_id: int):
         async with async_session_maker() as session:
-            query = select(cls.model).filter_by(id=product_id)
+            query = (
+                select(cls.model)
+                .options(joinedload(cls.model.characteristics))
+                .filter_by(id=product_id)
+            )
             product = await session.execute(query)
-            return product.scalar_one_or_none()
+
+            return product.unique().scalar_one_or_none()

@@ -16,5 +16,17 @@
       <p class="product-description">{{ product.description }}</p>
     </div>
   </div>
+  <div class="product-characteristics">
+    <ul>
+      <h3 class="characteristics-title">Характеристики</h3>
+      <br>
+      {% for characteristic in product.characteristics %}
+        <li class="product-characteristic">
+          <strong>{{ characteristic.name_of_characteristic }}:</strong>
+          {{ characteristic.value_of_characteristic }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
 {% endblock content %}
