@@ -6,7 +6,7 @@ class SProductsDetail(BaseModel):
     id: int
     name: str
     description: Optional[str]
-    image_name: str
+    image_name: str | None
     is_active: bool
 
     model_config = ConfigDict(from_attributes=True)

@@ -4,29 +4,29 @@
 <div class="detail">
   <h2 class="detail__title">Подробная информация о продукте</h2>
   <div class="product-content">
-    <div class="product-img">
+    <div class="product-content__chars-img">
       {% if product.image_name %}
         <img src="{{ url_for('static', path='images/' + product.image_name|string + '.webp')}}" alt="Фото продукта">
       {% else %}
         <img src="{{ url_for('static', path='images/coming_soon.png')}}" alt="Фото продукта">
       {% endif %}
+      <div class="product-content__chars">
+        <h3 class="characteristics-title">Характеристики</h3>
+        <hr>
+        <table class="product-content__chars-table">
+          {% for characteristic in product.characteristics %}
+            <tr class="{% if loop.index is even %}even{% else %}odd{% endif %}">
+              <td>{{ characteristic.name_of_characteristic }}</td>
+              <td>{{ characteristic.value_of_characteristic }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
     </div>
-    <div class="product-detail">
-      <h1 class="product-name">{{ product.name }}</h1>
-      <p class="product-description">{{ product.description }}</p>
+    <div class="product-content__detail">
+      <h1 class="product-content__name">{{ product.name }}</h1>
+      <p class="product-content__text">{{ product.description }}</p>
     </div>
-  </div>
-  <div class="product-characteristics">
-    <ul>
-      <h3 class="characteristics-title">Характеристики</h3>
-      <br>
-      {% for characteristic in product.characteristics %}
-        <li class="product-characteristic">
-          <strong>{{ characteristic.name_of_characteristic }}:</strong>
-          {{ characteristic.value_of_characteristic }}
-        </li>
-      {% endfor %}
-    </ul>
   </div>
 </div>
 {% endblock content %}
