@@ -1,4 +1,7 @@
+from wtforms.validators import DataRequired
 from sqladmin import ModelView
+from wtforms import TextAreaField
+
 
 from app.products.models import Products, ProductsInfo
 from app.admin.columns import (
@@ -17,6 +20,19 @@ class ProductsAdmin(ModelView, model=Products):
 
     column_labels = column_labels_for_products
     form_columns = form_columns_for_products
+
+    form_overrides = {
+        'description': TextAreaField
+    }
+
+    form_args = {
+        'description': {
+            'label': 'Описание',
+            'validators': [DataRequired()]
+        }
+    }
+    
+    form_template = "admin/model_form.html"
 
 
 class ProductsInfoAdmin(ModelView, model=ProductsInfo):
