@@ -1,0 +1,23 @@
+from typing import Optional, Annotated
+from sqlalchemy.orm import Mapped, mapped_column
+
+from app.database import Base
+
+intpk = Annotated[int, mapped_column(primary_key=True)]
+
+
+class MainContent(Base):
+    __tablename__ = "main_content"
+    
+    id: Mapped[intpk]
+    logo: Mapped[Optional[str]]
+    phone: Mapped[Optional[str]]
+    email: Mapped[Optional[str]]
+    main_title: Mapped[Optional[str]]
+    main_desc: Mapped[Optional[str]]
+    products_title: Mapped[Optional[str]]
+    product_title: Mapped[Optional[str]]
+    footer: Mapped[Optional[str]]
+    
+    def __str__(self):
+        return f"Контент: {self.name}"

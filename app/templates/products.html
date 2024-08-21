@@ -2,7 +2,9 @@
 
 {% block content %}
 <div class="detail">
-  <h2 class="detail__title">Подробная информация о продукте</h2>
+  {% if content.product_title %}
+    <h2 class="detail__title">{{ content.product_title }}</h2>
+  {% endif %}
   <div class="product-content">
     <div class="product-content__chars-img">
       {% if product.image_name %}
@@ -11,8 +13,10 @@
         <img src="{{ url_for('static', path='images/coming_soon.png')}}" alt="Фото продукта">
       {% endif %}
       <div class="product-content__chars">
-        <h3 class="characteristics-title">Характеристики</h3>
-        <hr>
+        {% if product.characteristics %}
+          <h3 class="characteristics-title">Характеристики</h3>
+          <hr>
+        {% endif %}
         <table class="product-content__chars-table">
           {% for characteristic in product.characteristics %}
             <tr class="{% if loop.index is even %}even{% else %}odd{% endif %}">

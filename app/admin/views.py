@@ -1,14 +1,17 @@
 from wtforms.validators import DataRequired
 from sqladmin import ModelView
-from wtforms import TextAreaField
+from wtforms import TextAreaField, SelectField
 
 
 from app.products.models import Products, ProductsInfo
+from app.main_content.models import MainContent
 from app.admin.columns import (
     column_labels_for_products,
     column_labels_for_products_info,
     form_columns_for_products,
-    form_columsn_for_products_info
+    form_columsn_for_products_info,
+    column_labels_for_main_content,
+    form_column_for_main_content,
 )
 
 
@@ -22,17 +25,19 @@ class ProductsAdmin(ModelView, model=Products):
     form_columns = form_columns_for_products
 
     form_overrides = {
-        'description': TextAreaField
+        "description": TextAreaField,
+        "aligment": SelectField
     }
 
     form_args = {
-        'description': {
-            'label': 'Описание',
-            'validators': [DataRequired()]
+        "description": {
+            "label": "Описание",
+            "validators": [DataRequired()]
+        },
+        'alignment': {
+            'choices': [('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]
         }
     }
-    
-    form_template = "admin/model_form.html"
 
 
 class ProductsInfoAdmin(ModelView, model=ProductsInfo):
@@ -43,3 +48,14 @@ class ProductsInfoAdmin(ModelView, model=ProductsInfo):
 
     column_labels = column_labels_for_products_info
     form_columns = form_columsn_for_products_info
+
+
+class MainContentAdmin(ModelView, model=MainContent):
+    column_list = [c.name for c in MainContent.__table__.c]
+    name = "Поля контента"
+    name_plural = "Контент"
+    icon = "fa-solid fa-brush"
+    can_delete = False
+
+    column_labels = column_labels_for_main_content
+    form_columns = form_column_for_main_content

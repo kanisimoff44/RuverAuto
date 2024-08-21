@@ -3,7 +3,8 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from app.products.router import get_all_products, get_product_by_id
-from app.products.schemas import SProductsAll, SProductsDetail
+from app.main_content.router import get_content
+
 
 router = APIRouter(
     prefix="/pages",
@@ -17,7 +18,8 @@ templates = Jinja2Templates(directory="app/templates/")
 @router.get("/main", response_class=HTMLResponse)
 async def main_page(
     request: Request,
-    products=Depends(get_all_products)
+    products=Depends(get_all_products),
+    content=Depends(get_content)
 ):
     """
     Main page
@@ -26,7 +28,8 @@ async def main_page(
         "main.html",
         {
             "request": request,
-            "products": products
+            "products": products,
+            "content": content
         },
     )
 
@@ -34,13 +37,15 @@ async def main_page(
 @router.get("/products/{product_id}", response_class=HTMLResponse)
 async def get_product_by_id(
     request: Request,
-    product=Depends(get_product_by_id)
+    product=Depends(get_product_by_id),
+    content=Depends(get_content)
 ):
     return templates.TemplateResponse(
         "products.html",
         {
             "request": request,
-            "product": product
+            "product": product,
+            "content": content
         },
     )
 

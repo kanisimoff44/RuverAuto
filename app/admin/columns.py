@@ -35,3 +35,19 @@ column_labels_for_products_info = {
 form_columsn_for_products_info = {
 
 }
+
+column_labels_for_main_content = {
+    "id": "Идентификатор",
+    "logo": "Логотип",
+    "phone": "Телефон",
+    "email": "Почта",
+    "main_title": "Заголовок страницы",
+    "main_desc": "Описание страницы",
+    "products_title": "Заголовок для товаров",
+    "product_title": "Заголовок на странице товара",
+    "footer": "Подвал",
+}
+
+form_column_for_main_content = {
+    
+}

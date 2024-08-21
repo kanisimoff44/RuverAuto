@@ -8,13 +8,13 @@ from redis import asyncio as aioredis
 from sqladmin import Admin
 
 from app.database import engine
-from app.admin.views import ProductsAdmin
-from app.admin.views import ProductsInfoAdmin
+from app.admin.views import ProductsAdmin, ProductsInfoAdmin, MainContentAdmin
 from app.config import settings
 from app.logger import logger
-from app.products.router import router as products_router
-from app.pages.router import router as pages_router
 from app.load_images.router import router as images_router
+from app.main_content.router import router as content_router
+from app.pages.router import router as pages_router
+from app.products.router import router as products_router
 
 
 @asynccontextmanager
@@ -40,8 +40,10 @@ app.include_router(products_router)
 
 app.include_router(pages_router)
 app.include_router(images_router)
+app.include_router(content_router)
 
 admin = Admin(app, engine)#, authentication_backend=authentication_backend)
+admin.add_view(MainContentAdmin)
 admin.add_view(ProductsAdmin)
 admin.add_view(ProductsInfoAdmin)
 
