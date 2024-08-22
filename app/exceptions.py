@@ -41,3 +41,8 @@ class UserIsNotPresentException(BookingException):
 class CannotProcessCSV(BookingException):
     status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
     detail="Не удалось обработать CSV файл"
+
+
+class CannotAddDataToDatabase(BookingException):
+    status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+    detail="Не удалось добавить запись"
