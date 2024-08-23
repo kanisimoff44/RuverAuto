@@ -26,6 +26,9 @@ class Settings(BaseSettings):
         return f"redis://:{self.REDIS_PASSWD}@{self.REDIS_HOST}:{self.REDIS_PORT}"
 
 
+    SECRET_KEY: str
+    ALGORITHM: str
+
     model_config = SettingsConfigDict(
         env_file=".env",
     )

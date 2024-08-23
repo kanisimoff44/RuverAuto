@@ -1,3 +1,4 @@
+from fastapi import Depends
 from datetime import datetime, timedelta, UTC
 
 from jose import jwt
@@ -7,6 +8,8 @@ from pydantic import EmailStr
 from app.config import settings
 from app.exceptions import IncorrectEmailOrPasswordException
 from app.users.dao import UserDAO
+from app.users.dependencies import get_current_user
+from app.users.models import Roles, Users
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -21,7 +24,7 @@ def verify_password(plain_password, hashed_password) -> bool:
 
 def create_access_token(data: dict) -> str:
     to_encode = data.copy()
-    expire = datetime.now(UTC) + timedelta(minutes=30)
+    expire = datetime.now(UTC) + timedelta(hours=24)
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(
         to_encode, settings.SECRET_KEY, settings.ALGORITHM

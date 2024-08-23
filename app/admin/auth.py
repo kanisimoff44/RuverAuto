@@ -7,7 +7,8 @@ from starlette.responses import RedirectResponse
 from app.logger import logger
 from app.users.auth import authenticate_user, create_access_token
 from app.users.dependencies import get_current_user
-
+from app.users.models import Roles
+from app.exceptions import TokenExpiredException
 
 class AdminAuth(AuthenticationBackend):
     async def login(self, request: Request) -> bool:
@@ -31,9 +32,13 @@ class AdminAuth(AuthenticationBackend):
         if not token:
             return RedirectResponse(request.url_for("admin:login"), status_code=302)
         
-        user = await get_current_user(token)
+        try:
+            user = await get_current_user(token)
+        except TokenExpiredException:
+            return RedirectResponse(request.url_for("admin:login"), status_code=302)
+
         logger.debug(f"{user=}")
-        if not user:
+        if not user or user.role not in [Roles.ROOT, Roles.ADMIN]:
             return RedirectResponse(request.url_for("admin:login"), status_code=302)
         return True
 

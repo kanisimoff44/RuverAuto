@@ -51,3 +51,30 @@ column_labels_for_main_content = {
 form_column_for_main_content = {
     
 }
+
+column_labels_for_users = {
+    "email": "Почта",
+    "hashed_password": "Пароль",
+    "is_active": "Активный",
+    "is_superuser": "Создатель",
+    "role": "Роль",
+}
+
+form_column_for_users = {
+    "email": {
+        "label": "Почта",
+        "description": "Укажите почту"
+    },
+    "hashed_password": {
+        "label": "Пароль",
+        "description": "Укажите пароль"
+    },
+    "is_active": {
+        "label": "Активный",
+        "description": "Активность пользователя"
+    },
+    "role": {
+        "label": "Роль",
+        "description": "Роль пользователя"
+    },
+}

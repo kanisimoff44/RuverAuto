@@ -1,3 +1,5 @@
+from typing import Any
+from fastapi import Request
 from wtforms.validators import DataRequired
 from sqladmin import ModelView
 from wtforms import TextAreaField, SelectField
@@ -5,6 +7,7 @@ from wtforms import TextAreaField, SelectField
 
 from app.products.models import Products, ProductsInfo
 from app.main_content.models import MainContent
+from app.users.models import Users
 from app.admin.columns import (
     column_labels_for_products,
     column_labels_for_products_info,
@@ -12,7 +15,10 @@ from app.admin.columns import (
     form_columsn_for_products_info,
     column_labels_for_main_content,
     form_column_for_main_content,
+    column_labels_for_users,
+    form_column_for_users,
 )
+from app.users.auth import get_password_hash
 
 
 class ProductsAdmin(ModelView, model=Products):
@@ -59,3 +65,18 @@ class MainContentAdmin(ModelView, model=MainContent):
 
     column_labels = column_labels_for_main_content
     form_columns = form_column_for_main_content
+
+
+class UsersAdmin(ModelView, model=Users):
+    column_list = [Users.email, Users.is_active, Users.is_superuser, Users.role]
+    name = "Пользователь"
+    name_plural = "Пользователи"
+    icon = "fa-solid fa-user"
+    can_delete = True
+
+    column_labels = column_labels_for_users
+    form_columns = form_column_for_users
+
+    async def on_model_change(self, data: dict, model: Any, is_created: bool, request: Request) -> None:
+        data["hashed_password"] = get_password_hash(data["hashed_password"])
+        return await super().on_model_change(data, model, is_created, request)
