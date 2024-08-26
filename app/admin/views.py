@@ -72,7 +72,7 @@ class UsersAdmin(ModelView, model=Users):
     name = "Пользователь"
     name_plural = "Пользователи"
     icon = "fa-solid fa-user"
-    can_delete = True
+    can_delete = False
 
     column_labels = column_labels_for_users
     form_columns = form_column_for_users

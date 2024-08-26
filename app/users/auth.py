@@ -1,4 +1,3 @@
-from fastapi import Depends
 from datetime import datetime, timedelta, UTC
 
 from jose import jwt
@@ -8,8 +7,6 @@ from pydantic import EmailStr
 from app.config import settings
 from app.exceptions import IncorrectEmailOrPasswordException
 from app.users.dao import UserDAO
-from app.users.dependencies import get_current_user
-from app.users.models import Roles, Users
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

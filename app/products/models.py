@@ -16,7 +16,10 @@ class Products(Base):
     image_name: Mapped[str]
     is_active: Mapped[bool]
 
-    characteristics: Mapped[list["ProductsInfo"]] = relationship(back_populates="product")
+    characteristics: Mapped[list["ProductsInfo"]] = relationship(
+        back_populates="product",
+        cascade="all, delete-orphan"
+    )
     
     def __str__(self):
         return f"Товар: {self.name}"
@@ -26,7 +29,7 @@ class ProductsInfo(Base):
     __tablename__ = "products_info"
 
     id: Mapped[intpk]
-    product_id: Mapped[int] = mapped_column(ForeignKey("products.id"))
+    product_id: Mapped[int] = mapped_column(ForeignKey("products.id", ondelete="CASCADE"))
     name_of_characteristic: Mapped[str]
     value_of_characteristic: Mapped[str]
     
