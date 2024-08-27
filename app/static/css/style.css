@@ -20,7 +20,7 @@ body::-webkit-scrollbar {
 }
 
 .header {
-  background-color: #e9e9e9;
+  background-color: #353535;
 }
 
 .header .header__info {
@@ -28,18 +28,6 @@ body::-webkit-scrollbar {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #353535;
-}
-
-.header .header__info .header__menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  list-style: none;
-  padding: 0;
-  margin: 0 40px 0 0;
-  column-gap: 12px;
 }
 
 .header .header__info .logo-link {
@@ -51,71 +39,41 @@ body::-webkit-scrollbar {
   height: 15vh;
 }
 
-.header__menu-phone {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  column-gap: 12px;
+.header__about-us {
+  max-width: 100%;
+  padding-left: 5px;
 }
 
-.header__menu-phone .phone-icon {
-  width: 15%;
-  height: 15%;
-}
-
-.header__menu-phone .phone {
-  font-size: 2em;
+.header__about-us .header__title {
+  font-family: "Roboto Slab", serif;
+  font-size: 20px;
   color: #ffffff;
+  text-align: left;
 }
 
-.header__menu-email {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  list-style: none;
-  padding: 0;
-  margin: 0 0 0 0;
-  column-gap: 12px;
-}
-
-.header__menu-email .email-icon {
-  width: 15%;
-  height: 15%;
-}
-
-.header__menu-email .email {
-  font-size: 2em;
+.header__about-us .header__description {
+  font-family: "Roboto", serif;
+  font-size: 18px;
+  line-height: 1.2;
   color: #ffffff;
+  text-align: left;
 }
 
 .header__nav-menu {
-  background-color: #353535;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
-  border-radius: 10px;
-}
-
-.header__nav-item {
   font-size: 26px;
-  display: flex; /* Ссылки в ряд */
-  list-style: none; /* Убрать стандартные маркеры списка */
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.header__nav-item li {
-  margin-left: 10vh; /* Расстояние между ссылками */
+.header__nav-menu .header__nav-link {
+  margin: 25px; /* Расстояние между ссылками */
 }
 
 .header__nav-link {
-  display: inline-block;
   padding: 10px 15px;
   text-decoration: none;
   color: #ffffff;
@@ -125,24 +83,52 @@ body::-webkit-scrollbar {
   color: #b2b2b2;
 }
 
-.main__about-us {
-  max-width: 100%;
-  padding-left: 5px;
+.header .header__info .header__info-contacts {
+  padding: 0;
+  margin: 0 40px 0 0;
+  column-gap: 12px;
 }
 
-.main__about-us .main__title {
-  font-family: "Roboto Slab", serif;
-  font-size: 14px;
-  color: #ffffff;
-  text-align: center;
+.header__info-phone {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  column-gap: 12px;
 }
 
-.main__about-us .main__description {
-  font-family: "Roboto", serif;
-  font-size: 14px;
-  line-height: 1.2;
+.header__info-phone .phone-icon {
+  width: 15%;
+  height: 15%;
+}
+
+.header__info-phone .phone {
+  font-size: 2em;
   color: #ffffff;
-  text-align: center;
+}
+
+.header__info-email {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 0;
+  column-gap: 12px;
+}
+
+.header__info-email .email-icon {
+  width: 15%;
+  height: 15%;
+}
+
+.header__info-email .email {
+  font-size: 2em;
+  color: #ffffff;
 }
 
 .main__content-container {

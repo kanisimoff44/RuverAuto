@@ -21,38 +21,35 @@
               <img src="{{ url_for('static', path='images/' + content.logo|string +'.png') }}" alt="Рувер-Авто" class="logo-icon">
             </a>
           {% endif %}
-          <div class="main__about-us">
+          <div class="header__about-us">
             {% if content.main_title %}
-              <h1 class="main__title">{{ content.main_title }}</h1>
+              <h1 class="header__title">{{ content.main_title }}</h1>
             {% endif %}
             {% if content.main_desc %}
-              <p class="main__description">{{ content.main_desc }}</p>
+              <p class="header__description">{{ content.main_desc }}</p>
             {% endif %}
           </div>
-          <div class="header__nav-menu">
-            <ul class="header__nav-item">
-              <li><a href="#" class="header__nav-link" class:name={condition}>Товары</a></li>
-              <li><a href="#" class="header__nav-link">Новости</a></li>
-              <li><a href="#" class="header__nav-link">Доставка и оплата</a></li>
-              <li><a href="#" class="header__nav-link">Контакты</a></li>
-            </ul>
-          </div>
-          <div class="header__menu">
-            <ul>
-              <li class="header__menu-phone">
-                {% if content.phone %}
-                  <img src="{{ url_for('static', path='images/phone.png') }}" alt="phone-icon" class="phone-icon">
-                  <h1 class="phone">{{ content.phone }}</h1>
-                {% endif %}
-              </li>
-              {% if content.email %}
-                <li class="header__menu-email">
-                  <img src="{{ url_for('static', path='images/email.png')}}" alt="email-icon" class="email-icon">
-                  <h2 class="email">{{ content.email }}</h2>
-                </li>
+          <ul class="header__nav-menu">
+            <li><a href="#" class="header__nav-link" class:name={condition}>Товары</a></li>
+            <li><a href="#" class="header__nav-link">Новости</a></li>
+            <li><a href="#" class="header__nav-link">Доставка и оплата</a></li>
+            <li><a href="#" class="header__nav-link">Контакты</a></li>
+          </ul>
+          
+          <ul class="header__info-contacts">
+            <li class="header__info-phone">
+              {% if content.phone %}
+                <img src="{{ url_for('static', path='images/phone.png') }}" alt="phone-icon" class="phone-icon">
+                <h1 class="phone">{{ content.phone }}</h1>
               {% endif %}
-            </ul>
-          </div>
+            </li>
+            <li class="header__info-email">
+              {% if content.email %}
+                <img src="{{ url_for('static', path='images/email.png')}}" alt="email-icon" class="email-icon">
+                <h2 class="email">{{ content.email }}</h2>
+              {% endif %}
+            </li>
+          </ul>
         </div>
       </div>
     </header>
