@@ -40,7 +40,10 @@
             <li class="header__info-phone">
               {% if content.phone %}
                 <img src="{{ url_for('static', path='images/phone.png') }}" alt="phone-icon" class="phone-icon">
-                <h1 class="phone">{{ content.phone }}</h1>
+                <div class="info-phone">
+                  <h1 class="phone">{{ content.phone }}</h1>
+                  <p class="phone-desc">Звонок по России бесплатный</p>
+                </div>
               {% endif %}
             </li>
             <li class="header__info-email">
