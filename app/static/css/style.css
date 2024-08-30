@@ -32,11 +32,11 @@ body::-webkit-scrollbar {
 
 .header .header__info .logo-link {
   margin: 0;
-  height: 15vh;
+  height: 11vh;
 }
 
 .header .header__info .logo-link img {
-  height: 15vh;
+  height: 11vh;
 }
 
 .header__about-us {
@@ -75,7 +75,7 @@ body::-webkit-scrollbar {
 }
 
 .header__nav-link {
-  padding: 10px 25px 10px 15px;
+  padding: 0 0 0 0;
   text-decoration: none;
   color: #ffffff;
 }
@@ -137,6 +137,20 @@ body::-webkit-scrollbar {
 .header__info-email .email {
   font-size: 20px;
   color: #ffffff;
+}
+
+.main__about-us {
+  max-width: 100%;
+  background-color: #017AC3;
+}
+
+.main__about-us .main__description {
+  margin: 0 0 0 0;
+  font-family: "Roboto", serif;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #ffffff;
+  text-align: left;
 }
 
 .main__content-container {
