@@ -17,9 +17,9 @@ class MainContent(Base):
     header_desc: Mapped[Optional[str]]
     main_desc: Mapped[Optional[str]]
     products_title: Mapped[Optional[str]]
-    amout_us_image: Mapped[Optional[str]]
-    amout_us_title: Mapped[Optional[str]]
-    amout_us_desc: Mapped[Optional[str]]
+    about_us_image: Mapped[Optional[str]]
+    about_us_title: Mapped[Optional[str]]
+    about_us_desc: Mapped[Optional[str]]
     product_title: Mapped[Optional[str]]
     footer: Mapped[Optional[str]]
     
