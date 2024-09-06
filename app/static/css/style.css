@@ -7,7 +7,7 @@ body {
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #fff;
 }
 
 /* body { */
@@ -21,6 +21,10 @@ body::-webkit-scrollbar {
 
 .header {
   background-color: #353535;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header .header__info {
@@ -47,7 +51,7 @@ body::-webkit-scrollbar {
 .header__about-us .header__title {
   font-family: "Roboto Slab", serif;
   font-size: 20px;
-  color: #ffffff;
+  color: #fff;
   text-align: left;
 }
 
@@ -55,13 +59,13 @@ body::-webkit-scrollbar {
   font-family: "Roboto", serif;
   font-size: 18px;
   line-height: 1.2;
-  color: #ffffff;
+  color: #fff;
   text-align: left;
 }
 
 .header__nav-menu {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   font-size: 26px;
   list-style: none;
@@ -77,19 +81,21 @@ body::-webkit-scrollbar {
 .header__nav-link {
   padding: 0 0 0 0;
   text-decoration: none;
-  color: #ffffff;
+  color: #fff;
 }
 
 .header__nav-link:hover {
-  color: #b2b2b2;
+  color: #9e9e9e;
 }
 
-.header .header__info .header__info-contacts {
-  padding: 0 0 0 25px;
-  margin: 0 0 0 5px;
+.header .header__info-contacts {
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
   column-gap: 12px;
 }
 
+.header 
+.header__info-contacts
 .header__info-phone {
   display: flex;
   flex-direction: row;
@@ -101,23 +107,36 @@ body::-webkit-scrollbar {
   column-gap: 12px;
 }
 
-.header__info-phone .phone-icon {
+.header 
+.header__info-contacts
+.header__info-phone
+.phone-icon {
   width: 7%;
   height: 7%;
 }
 
-.header__info-phone .info-phone .phone {
+.header 
+.header__info-contacts
+.header__info-phone
+.info-phone 
+.phone {
   margin: 0 0 0 0;
   font-size: 20px;
-  color: #ffffff;
+  color: #fff;
 }
 
-.header__info-phone .phone-desc {
+.header 
+.header__info-contacts
+.header__info-phone
+.info-phone
+.phone-desc {
   margin: 0 0 0 0;
   font-size: 12px;
-  color: #ffffff;
+  color: #fff;
 }
 
+.header 
+.header__info-contacts
 .header__info-email {
   display: flex;
   flex-direction: row;
@@ -129,43 +148,66 @@ body::-webkit-scrollbar {
   column-gap: 12px;
 }
 
-.header__info-email .email-icon {
+.header
+.header__info-contacts
+.header__info-email
+.email-icon {
   width: 7%;
   height: 7%;
 }
 
-.header__info-email .email {
+.header
+.header__info-contacts
+.header__info-email
+.email {
   font-size: 20px;
-  color: #ffffff;
+  color: #fff;
 }
 
-.main__about-us {
+.main__title {
   max-width: 100%;
   background-color: #017AC3;
 }
 
-.main__about-us .main__description {
+.main__title p.title {
   margin: 0 0 0 0;
   font-family: "Roboto", serif;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 1.2;
-  color: #ffffff;
-  text-align: left;
+  color: #fff;
+  text-align: center;
 }
 
 .main__content-container {
-  margin: 40px auto;
-  padding: 20px 0;
-  background-color: #fff;
+  margin-bottom: 0 0 0 0;
+  padding: 0 0 0 0;
   text-align: center;
-  max-width: 98%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
+  max-width: 100%;
 }
 
-.main__content-container .content-container-title {
+.main__content-container .content-container-title-products {
+  margin: 0 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main__content-container
+.content-container-title-products
+.content-container-title {
   font-family: "Roboto Slab", serif;
   font-size: 30px;
+  line-height: 1.2;
+  color: #333;
+  text-align: center;
+}
+
+.main__content-container
+.content-container-title-products
+.to-page-more {
+  font-family: "Roboto Slab", serif;
+  font-size: 18px;
   line-height: 1.2;
   color: #333;
   text-align: center;
@@ -177,43 +219,96 @@ body::-webkit-scrollbar {
   justify-content: center;
 }
 
-.main__content-container .content-container-items .content-item {
+.main__content-container
+.content-container-items
+.content-item {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  margin: 10px;
+  border: 1px solid #000;
+  margin: 0 30px;
   padding: 20px;
-  width: 200px;
+  width: 22.5%;
   text-align: center;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
-.main__content-container .content-container-items .content-item img {
+.main__content-container
+.content-container-items
+.content-item
+img {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
   display: block;
 }
 
-.main__content-container .content-container-items .content-item .btn-more {
+.main__content-container
+.content-container-items
+.content-item
+.btn-more {
   display: inline-block;
   padding: 10px 20px;
   margin-top: 10px;
+  margin-left: 70%;
   color: #fff;
-  background-color: #333;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 100%;
+  max-width: 15%;
 }
 
 .main__content-container
-  .content-container-items
-  .content-item
-  .btn-more:hover {
+.content-container-items
+.content-item
+.btn-more:hover {
   background-color: #555;
+}
+
+.main__about-us-container {
+  margin-left: 9%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.main__about-us-container .about-us-img {
+  max-width: 100%;
+  border-radius: 10%;
+}
+
+.main__about-us-container .main__about-us-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin: 20px 0 50px 30px;
+}
+
+.main__about-us-container
+.main__about-us-text 
+.title {
+  font-family: "Roboto Slab", serif;
+  font-size: 30px;
+  line-height: 1.2;
+  color: #333;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.main__about-us-container
+.main__about-us-text 
+.description {
+  font-family: "Roboto Slab", serif;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #333;
+  text-align: left;
+  margin-right: 10%;
 }
 
 .detail {
@@ -223,7 +318,7 @@ body::-webkit-scrollbar {
   margin-top: 20px;
   background-color: #fff;
   padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(126, 64, 64, 0.1);
   border-radius: 10px;
 }
 
@@ -265,11 +360,11 @@ body::-webkit-scrollbar {
 }
 
 .detail
-  .product-content
-  .product-content__chars-img
-  .product-content__chars
-  .product-content__chars-table
-  th,
+.product-content
+.product-content__chars-img
+.product-content__chars
+.product-content__chars-table
+th,
 td {
   padding: 8px;
   text-align: left;
@@ -314,10 +409,105 @@ td {
 }
 
 .footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   padding: 5px 0;
   width: 100%;
   height: auto;
   background-color: #353535;
   color: #fff;
   position: relative;
+}
+
+.footer .footer__info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer .footer__info {
+  margin: 0;
+  height: 11vh;
+}
+
+.footer .footer__info img.logo-icon {
+  height: 11vh;
+}
+
+.footer__about-us {
+  max-width: 100%;
+  padding-left: 5px;
+}
+
+.footer__about-us .footer__title {
+  font-family: "Roboto Slab", serif;
+  font-size: 20px;
+  color: #fff;
+  text-align: left;
+}
+
+.footer__about-us .footer__description {
+  font-family: "Roboto", serif;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #fff;
+  text-align: left;
+}
+
+.footer .footer__info .footer__info-contacts {
+  padding: 0 0 0 25px;
+  margin: 0 0 0 5px;
+  column-gap: 12px;
+}
+
+.footer__info-phone {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  column-gap: 12px;
+}
+
+.footer__info-phone .phone-icon {
+  width: 7%;
+  height: 7%;
+}
+
+.footer__info-phone .info-phone .phone {
+  margin: 0 0 0 0;
+  font-size: 20px;
+  color: #fff;
+}
+
+.footer__info-phone .phone-desc {
+  margin: 0 0 0 0;
+  font-size: 12px;
+  color: #fff;
+}
+
+.footer__info-email {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 0;
+  column-gap: 12px;
+}
+
+.footer__info-email .email-icon {
+  width: 7%;
+  height: 7%;
+}
+
+.footer__info-email .email {
+  font-size: 20px;
+  color: #fff;
 }
