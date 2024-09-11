@@ -25,7 +25,14 @@ from app.users.auth import get_password_hash
 
 
 class ProductsAdmin(ModelView, model=Products):
-    column_list = [c.name for c in Products.__table__.c] + [Products.characteristics]
+    column_list = [
+        Products.id,
+        Products.name,
+        Products.image_name,
+        Products.is_active,
+        Products.description
+    ] + [Products.characteristics]
+
     name = "Товар"
     name_plural = "Товары"
     icon = "fa-solid fa-car"
@@ -86,7 +93,14 @@ class UsersAdmin(ModelView, model=Users):
 
 
 class NewsAdmin(ModelView, model=News):
-    column_list = [c.name for c in News.__table__.c]
+    column_list = [
+        News.id,
+        News.title,
+        News.date_of_the_news,
+        News.news_image_name,
+        News.is_active,
+        News.description
+    ]
     name = "Новость"
     name_plural = "Новости"
     icon = "fa-solid fa-newspaper"
@@ -94,3 +108,7 @@ class NewsAdmin(ModelView, model=News):
 
     column_labels = column_labels_for_news
     form_columns = form_column_for_news
+    
+    form_overrides = {
+        "description": TextAreaField
+    }

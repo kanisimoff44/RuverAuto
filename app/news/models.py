@@ -12,9 +12,10 @@ class News(Base):
     __tablename__ = "news"
     
     id: Mapped[intpk]
-    name: Mapped[str]
+    title: Mapped[Optional[str]]
     description: Mapped[Optional[str]]
-    date_of_the_news: Mapped[date] = mapped_column(Date)
+    date_of_the_news: Mapped[Optional[date]] = mapped_column(Date)
+    news_image_name: Mapped[Optional[str]]
     is_active: Mapped[bool]
 
     def __str__(self):

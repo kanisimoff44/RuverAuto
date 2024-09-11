@@ -18,7 +18,7 @@
         <div class="header__info">
           {% if content.logo %}
             <a href="/pages/main" class="logo-link">
-              <img src="{{ url_for('static', path='images/' + content.logo|string +'.png') }}" alt="Рувер-Авто" class="logo-icon">
+              <img src="{{ url_for('static', path='images/' + content.logo|string) }}" alt="Рувер-Авто" class="logo-icon">
             </a>
           {% endif %}
           <div class="header__about-us">
@@ -63,7 +63,7 @@
     <div class="footer">
       <div class="footer__info">
         {% if content.logo %}
-          <img src="{{ url_for('static', path='images/' + content.logo|string +'.png') }}" alt="Рувер-Авто" class="logo-icon">
+          <img src="{{ url_for('static', path='images/' + content.logo|string) }}" alt="Рувер-Авто" class="logo-icon">
         {% endif %}
         <div class="footer__about-us">
           {% if content.header_title %}

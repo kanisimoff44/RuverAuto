@@ -11,9 +11,9 @@ class Products(Base):
     __tablename__ = "products"
     
     id: Mapped[intpk]
-    name: Mapped[str]
+    name: Mapped[Optional[str]]
     description: Mapped[Optional[str]]
-    image_name: Mapped[str]
+    image_name: Mapped[Optional[str]]
     is_active: Mapped[bool]
 
     characteristics: Mapped[list["ProductsInfo"]] = relationship(

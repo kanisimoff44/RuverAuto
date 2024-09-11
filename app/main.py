@@ -23,6 +23,7 @@ from app.main_content.router import router as content_router
 from app.pages.router import router as pages_router
 from app.products.router import router as products_router
 from app.users.router import router as users_router
+from app.news.router import router as news_router
 
 
 @asynccontextmanager
@@ -45,10 +46,10 @@ app = FastAPI(
 )
 
 app.include_router(products_router)
-
+app.include_router(news_router)
+app.include_router(content_router)
 app.include_router(pages_router)
 app.include_router(images_router)
-app.include_router(content_router)
 app.include_router(users_router)
 
 admin = Admin(app, engine, authentication_backend=authentication_backend)

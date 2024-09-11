@@ -8,20 +8,16 @@ column_labels_for_products = {
 
 form_columns_for_products = {
     "name": {
-        "label": "Название",
-        "description": "Введите название товара"
+        "label": "Название"
     },
     "description": {
-        "label": "Описание",
-        "description": "Введите описание товара"
+        "label": "Описание"
     },
     "image_name": {
-        "label": "Фото",
-        "description": "Введите идентификатор фото товара"
+        "label": "Фото"
     },
     "is_active": {
-        "label": "Публикация",
-        "description": "Отметьте для публикации"
+        "label": "Публикация"
     }
 }
 
@@ -67,27 +63,42 @@ column_labels_for_users = {
 
 form_column_for_users = {
     "email": {
-        "label": "Почта",
-        "description": "Укажите почту"
+        "label": "Почта"
     },
     "hashed_password": {
-        "label": "Пароль",
-        "description": "Укажите пароль"
+        "label": "Пароль"
     },
     "is_active": {
-        "label": "Активный",
-        "description": "Активность пользователя"
+        "label": "Активный"
     },
     "role": {
-        "label": "Роль",
-        "description": "Роль пользователя"
+        "label": "Роль"
     },
 }
 
 column_labels_for_news = {
-    
+    "id": "Идентификатор",
+    "title": "Заголовок",
+    "date_of_the_news": "Дата",
+    "news_image_name": "Изображение",
+    "is_active": "Публикация",
+    "description": "Описание новости",
 }
 
 form_column_for_news = {
-    
+    "title": {
+        "label": "Заголовок"
+    },
+    "description": {
+        "label": "Описание новости"
+    },
+    "date_of_the_news": {
+        "label": "Дата"
+    },
+    "news_image_name": {
+        "label": "Изображение"
+    },
+    "is_active": {
+        "label": "Публикация"
+    },
 }
