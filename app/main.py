@@ -9,7 +9,13 @@ from sqladmin import Admin
 
 from app.database import engine
 from app.admin.auth import authentication_backend
-from app.admin.views import ProductsAdmin, ProductsInfoAdmin, MainContentAdmin, UsersAdmin
+from app.admin.views import (
+    ProductsAdmin,
+    ProductsInfoAdmin,
+    MainContentAdmin,
+    UsersAdmin,
+    NewsAdmin
+)
 from app.config import settings
 from app.logger import logger
 from app.load_images.router import router as images_router
@@ -50,6 +56,7 @@ admin.add_view(MainContentAdmin)
 admin.add_view(ProductsAdmin)
 admin.add_view(ProductsInfoAdmin)
 admin.add_view(UsersAdmin)
+admin.add_view(NewsAdmin)
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 

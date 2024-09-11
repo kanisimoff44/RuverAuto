@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="detail">
+  {% if content.product_title %}
+    <h2 class="detail__title">{{ content.product_title }}</h2>
+  {% endif %}
+  <div class="product-content">
+    <div class="product-content__chars-img">
+      {% if product.image_name %}
+        <img src="{{ url_for('static', path='images/' + product.image_name|string + '.webp')}}" alt="Фото продукта">
+      {% else %}
+        <img src="{{ url_for('static', path='images/coming_soon.png')}}" alt="Фото продукта">
+      {% endif %}
+      <div class="product-content__chars">
+        {% if product.characteristics %}
+          <h3 class="characteristics-title">Характеристики</h3>
+          <hr>
+        {% endif %}
+        <table class="product-content__chars-table">
+          {% for characteristic in product.characteristics %}
+            <tr class="{% if loop.index is even %}even{% else %}odd{% endif %}">
+              <td>{{ characteristic.name_of_characteristic }}</td>
+              <td>{{ characteristic.value_of_characteristic }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    <div class="product-content__detail">
+      <h1 class="product-content__name">{{ product.name }}</h1>
+      <p class="product-content__text">{{ product.description }}</p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

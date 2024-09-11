@@ -7,6 +7,7 @@ from wtforms import TextAreaField, SelectField
 
 from app.products.models import Products, ProductsInfo
 from app.main_content.models import MainContent
+from app.news.models import News
 from app.users.models import Users
 from app.admin.columns import (
     column_labels_for_products,
@@ -17,6 +18,8 @@ from app.admin.columns import (
     form_column_for_main_content,
     column_labels_for_users,
     form_column_for_users,
+    column_labels_for_news,
+    form_column_for_news
 )
 from app.users.auth import get_password_hash
 
@@ -80,3 +83,14 @@ class UsersAdmin(ModelView, model=Users):
     async def on_model_change(self, data: dict, model: Any, is_created: bool, request: Request) -> None:
         data["hashed_password"] = get_password_hash(data["hashed_password"])
         return await super().on_model_change(data, model, is_created, request)
+
+
+class NewsAdmin(ModelView, model=News):
+    column_list = [c.name for c in News.__table__.c]
+    name = "Новость"
+    name_plural = "Новости"
+    icon = "fa-solid fa-newspaper"
+    can_delete = True
+
+    column_labels = column_labels_for_news
+    form_columns = form_column_for_news

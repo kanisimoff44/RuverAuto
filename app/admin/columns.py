@@ -83,3 +83,11 @@ form_column_for_users = {
         "description": "Роль пользователя"
     },
 }
+
+column_labels_for_news = {
+    
+}
+
+form_column_for_news = {
+    
+}

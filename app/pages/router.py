@@ -4,6 +4,7 @@ from fastapi.templating import Jinja2Templates
 
 from app.products.router import get_all_products, get_product_by_id
 from app.main_content.router import get_content
+from app.news.router import get_all_news
 
 
 router = APIRouter(
@@ -19,7 +20,8 @@ templates = Jinja2Templates(directory="app/templates/")
 async def main_page(
     request: Request,
     products=Depends(get_all_products),
-    content=Depends(get_content)
+    content=Depends(get_content),
+    news=Depends(get_all_news)
 ):
     """
     Main page
@@ -29,7 +31,8 @@ async def main_page(
         {
             "request": request,
             "products": products,
-            "content": content
+            "content": content,
+            "news": news
         },
     )
 
