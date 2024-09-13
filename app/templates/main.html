@@ -19,9 +19,9 @@
       {% if product.is_active is true %}
         <div class="content-item">
           {% if product.image_name %}
-            <img src="{{ url_for('static', path='images/' + product.image_name|string + '.webp')}}" alt="Фото продукта">
+            <img src="{{ url_for('static', path='images/' + product.image_name|string)}}" alt="Фото продукта" class="content-item-img">
           {% else %}
-            <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Фото продукта">
+            <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Фото продукта" class="content-item-img">
           {% endif %}
           <h3>{{ product.name }}</h3>
           <p>{{ product.short_description }}</p>
@@ -48,10 +48,10 @@
   </div>
 </div>
 
-<div class="main__news-container"></div>
+<div class="main__news-container">
   <div class="news-container-title">
-    {% if news.products_title %}
-      <h2 class="news-container-title">{{ news.products_title }}</h2>
+    {% if content.news_title %}
+      <h2 class="news-title">{{ content.news_title }}</h2>
       <a href="#" class="to-page-more">Смотреть все</a>
     {% endif %}
   </div>
@@ -59,10 +59,10 @@
     {% for one_news in news %}
       {% if one_news.is_active is true %}
         <div class="news-item">
-          {% if one_news.image_name %}
-            <img src="{{ url_for('static', path='images/' + news.image_name|string + '.webp')}}" alt="Фото продукта">
+          {% if one_news.news_image_name %}
+            <img src="{{ url_for('static', path='images/' + one_news.news_image_name|string)}}" alt="Фото продукта" class="news-item-img">
           {% else %}
-            <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Фото продукта">
+            <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Фото продукта" class="news-item-img">
           {% endif %}
           <h3>{{ one_news.title }}</h3>
           <p>{{ one_news.description }}</p>

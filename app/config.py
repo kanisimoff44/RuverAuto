@@ -23,7 +23,8 @@ class Settings(BaseSettings):
 
     @property
     def REDIS_URL(self) -> str:
-        return f"redis://:{self.REDIS_PASSWD}@{self.REDIS_HOST}:{self.REDIS_PORT}"
+        # return f"redis://:{self.REDIS_PASSWD}@{self.REDIS_HOST}:{self.REDIS_PORT}"
+        return f"redis://{self.REDIS_HOST}:{self.REDIS_PORT}"
 
 
     SECRET_KEY: str

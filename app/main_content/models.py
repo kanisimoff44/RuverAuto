@@ -20,6 +20,9 @@ class MainContent(Base):
     about_us_image: Mapped[Optional[str]]
     about_us_title: Mapped[Optional[str]]
     about_us_desc: Mapped[Optional[str]]
+    news_title: Mapped[Optional[str]]
+    one_news_title: Mapped[Optional[str]]
+    brands_title: Mapped[Optional[str]]
     product_title: Mapped[Optional[str]]
     footer: Mapped[Optional[str]]
     
