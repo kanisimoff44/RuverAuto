@@ -1,4 +1,4 @@
-"""empty message
+"""add products
 
 Revision ID: 71a4be555332
 Revises: 

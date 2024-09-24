@@ -14,6 +14,8 @@ class Products(Base):
     name: Mapped[Optional[str]]
     description: Mapped[Optional[str]]
     image_name: Mapped[Optional[str]]
+    price: Mapped[Optional[int]]
+    label: Mapped[Optional[bool]]
     is_active: Mapped[bool]
 
     characteristics: Mapped[list["ProductsInfo"]] = relationship(

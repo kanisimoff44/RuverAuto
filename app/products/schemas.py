@@ -7,6 +7,8 @@ class SProductsDetail(BaseModel):
     name: str
     description: Optional[str]
     image_name: Optional[str]
+    price: Optional[int]
+    label: Optional[bool]
     is_active: bool
 
     model_config = ConfigDict(from_attributes=True)
@@ -14,3 +16,4 @@ class SProductsDetail(BaseModel):
 
 class SProductsAll(SProductsDetail):
     short_description: Optional[str]
+    characteristics: Optional[list]

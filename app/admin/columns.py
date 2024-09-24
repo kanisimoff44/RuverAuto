@@ -3,6 +3,8 @@ column_labels_for_products = {
     "name": "Название",
     "description": "Описание",
     "image_name": "Фото",
+    "price": "Цена",
+    "label": "Лейбл",
     "is_active": "Публикация"
 }
 
@@ -15,6 +17,12 @@ form_columns_for_products = {
     },
     "image_name": {
         "label": "Фото"
+    },
+    "price": {
+        "label": "Цена"
+    },
+    "label": {
+        "label": "Лейбл"
     },
     "is_active": {
         "label": "Публикация"

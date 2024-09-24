@@ -29,6 +29,8 @@ class ProductsAdmin(ModelView, model=Products):
         Products.id,
         Products.name,
         Products.image_name,
+        Products.price,
+        Products.label,
         Products.is_active,
         Products.description
     ] + [Products.characteristics]
@@ -42,17 +44,6 @@ class ProductsAdmin(ModelView, model=Products):
 
     form_overrides = {
         "description": TextAreaField,
-        "aligment": SelectField
-    }
-
-    form_args = {
-        "description": {
-            "label": "Описание",
-            "validators": [DataRequired()]
-        },
-        'alignment': {
-            'choices': [('left', 'Left'), ('right', 'Right'), ('center', 'Center'), ('justify', 'Justify')]
-        }
     }
 
 
