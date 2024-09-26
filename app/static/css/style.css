@@ -225,7 +225,7 @@ body::-webkit-scrollbar {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   background-color: #f9f9f9;
   border: 1px solid #000;
   margin: 0 30px;
@@ -241,8 +241,9 @@ body::-webkit-scrollbar {
 .content-item
 .content-item-image
 .content-item-img {
-  max-width: 100%;
   width: 100%;
+  height: 270px;
+  object-fit: cover;
   border-radius: 10px;
   display: block;
 }
@@ -283,27 +284,86 @@ body::-webkit-scrollbar {
 .content-container-items
 .content-item
 .content-item-title {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: bold;
 }
 
 .main__content-container
 .content-container-items
 .content-item
-.btn-more-img {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-top: 10px;
-  margin-left: 70%;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 100%;
-  max-width: 20%;
+.content-item-desc
+.characteristics-list {
+  margin: 0 0 0 0;
+  text-align: left;
 }
 
 .main__content-container
 .content-container-items
 .content-item
+.content-item-desc
+.characteristics-list
+.characteristics {
+  font-size: 18px;
+}
+
+.main__content-container
+.content-container-items
+.content-item
+.content-item-desc
+.description {
+  font-size: 24px;
+  margin: 0 0 0 0;
+  flex-grow: 1;
+}
+
+.main__content-container
+.content-container-items
+.content-item
+.content-item-price-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.main__content-container
+.content-container-items
+.content-item
+.content-item-price-btn 
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 0 0;
+}
+
+.main__content-container
+.content-container-items
+.content-item
+.content-item-price-btn
+.btn-more {
+  display: inline-block;
+  padding: 0 0 0 0;
+  text-decoration: none;
+  border-radius: 100%;
+  max-width: 70px;
+}
+
+.main__content-container
+.content-container-items
+.content-item
+.content-item-price-btn
+.btn-more-img {
+  display: inline-block;
+  padding: 0 0 0 0;
+  text-decoration: none;
+  border-radius: 100%;
+  max-width: 70%;
+}
+
+.main__content-container
+.content-container-items
+.content-item
+.content-item-price-btn
 .btn-more-img:hover {
   background-color: #7e7e7e;
 }

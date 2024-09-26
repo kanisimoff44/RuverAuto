@@ -35,19 +35,19 @@
               <h3>{{ product.name }}</h3>
             {% endif %}
           </div>
-          {% if product.characteristics %}
-            {% for characteristic in product.characteristics %}
-              <ul>
-                <li>{{ characteristic.name }}</li>
-                <li>{{ characteristic.value }}</li>
-              </ul>
-            {% endfor %}
-          {% elif product.description %}
-            <p>{{ product.description }}</p>
-          {% endif %}
-          <a href="/pages/products/{{ product.id }}" class="btn-more">
-            <img src="{{ url_for('static', path='images/btn.png') }}" alt="Подробнее" class="btn-more-img">
-          </a>
+          <div class="content-item-desc">
+            {% if product.short_description %}
+              <p class="description">{{ product.short_description }}</p>
+            {% endif %}
+          </div>
+          <div class="content-item-price-btn">
+            {% if product.price %}
+              <p class="price">{{ product.price }}₽</p>
+            {% endif %}
+            <a href="/pages/products/{{ product.id }}" class="btn-more">
+              <img src="{{ url_for('static', path='images/btn.png') }}" alt="одробнее" class="btn-more-img">
+            </a>
+          </div>
         </div>
       {% endif %}
     {% endfor %}
