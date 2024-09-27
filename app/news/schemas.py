@@ -3,7 +3,7 @@ from typing import Optional
 from datetime import date
 
 
-class SNewsAll(BaseModel):
+class SNewsDetail(BaseModel):
     id: int
     title: Optional[str]
     description: Optional[str]
@@ -12,3 +12,7 @@ class SNewsAll(BaseModel):
     is_active: bool
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class SNewsAll(SNewsDetail):
+    short_description: Optional[str]

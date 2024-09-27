@@ -99,7 +99,7 @@ body::-webkit-scrollbar {
 .header__info-phone {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   list-style: none;
   padding: 0;
@@ -111,8 +111,8 @@ body::-webkit-scrollbar {
 .header__info-contacts
 .header__info-phone
 .phone-icon {
-  width: 7%;
-  height: 7%;
+  width: 5%;
+  height: 5%;
 }
 
 .header 
@@ -321,7 +321,7 @@ body::-webkit-scrollbar {
 .content-item
 .content-item-price-btn {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-top: auto;
 }
@@ -333,7 +333,7 @@ body::-webkit-scrollbar {
 .price {
   font-size: 24px;
   font-weight: bold;
-  margin: 0 0 0 0;
+  margin-right: auto;
 }
 
 .main__content-container
@@ -341,7 +341,8 @@ body::-webkit-scrollbar {
 .content-item
 .content-item-price-btn
 .btn-more {
-  display: inline-block;
+  display: flex;
+  justify-content: flex-end;
   padding: 0 0 0 0;
   text-decoration: none;
   border-radius: 100%;
@@ -369,13 +370,12 @@ body::-webkit-scrollbar {
 }
 
 .main__about-us-container {
-  margin-left: 9%;
+  margin: 0 0 0 9%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 50px;
 }
 
 .main__about-us-container .about-us-img {
@@ -392,7 +392,7 @@ body::-webkit-scrollbar {
 }
 
 .main__about-us-container
-.main__about-us-text 
+.main__about-us-text
 .title {
   font-family: "Roboto Slab", serif;
   font-size: 30px;
@@ -403,7 +403,7 @@ body::-webkit-scrollbar {
 }
 
 .main__about-us-container
-.main__about-us-text 
+.main__about-us-text
 .description {
   font-family: "Roboto Slab", serif;
   font-size: 18px;
@@ -411,6 +411,134 @@ body::-webkit-scrollbar {
   color: #333;
   text-align: left;
   margin-right: 10%;
+}
+
+.main__news-container {
+  margin-bottom: 0 0 0 0;
+  padding: 0 0 0 0;
+  text-align: center;
+  max-width: 100%;
+}
+
+.main__news-container .news-container-title {
+  margin: 0 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main__news-container
+.news-container-title
+.news-title {
+  font-family: "Roboto Slab", serif;
+  font-size: 30px;
+  line-height: 1.2;
+  color: #333;
+  text-align: center;
+}
+
+.main__news-container
+.news-container-title
+.to-page-more {
+  font-family: "Roboto Slab", serif;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #333;
+  text-align: center;
+}
+
+.main__news-container .news-container-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.main__news-container
+.news-container-items
+.news-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  border: 1px solid #000;
+  margin: 0 30px;
+  padding: 20px;
+  width: 22.5%;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.main__news-container
+.news-container-items
+.news-item
+.news-item-img {
+  max-width: 100%;
+  height: 50%;
+  border-radius: 10px;
+  display: block;
+}
+
+.main__news-container
+.news-container-items
+.news-item
+.news-item-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.main__news-container
+.news-container-items
+.news-item
+.news-item-desc
+.description {
+  font-size: 24px;
+  margin: 0 0 0 0;
+  flex-grow: 1;
+}
+
+.main__news-container
+.news-container-items
+.news-item
+.news-item-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: auto;
+}
+
+.main__news-container
+.news-container-items
+.news-item
+.news-item-btn
+.btn-more {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0 0 0;
+  text-decoration: none;
+  border-radius: 100%;
+  max-width: 70px;
+}
+
+.main__news-container
+.news-container-items
+.news-item
+.news-item-btn
+.btn-more-img {
+  display: inline-block;
+  padding: 0 0 0 0;
+  text-decoration: none;
+  border-radius: 100%;
+  max-width: 70%;
+}
+
+.main__content-container
+.content-container-items
+.content-item
+.content-item-price-btn
+.btn-more-img:hover {
+  background-color: #7e7e7e;
 }
 
 .detail {
@@ -512,94 +640,6 @@ td {
 .product-content__chars-table
 .odd {
   background-color: #eee;
-}
-
-.main__news-container {
-  margin-bottom: 0 0 0 0;
-  padding: 0 0 0 0;
-  text-align: center;
-  max-width: 100%;
-}
-
-.main__news-container .news-container-title {
-  margin: 0 10%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.main__news-container
-.news-container-title
-.news-title {
-  font-family: "Roboto Slab", serif;
-  font-size: 30px;
-  line-height: 1.2;
-  color: #333;
-  text-align: center;
-}
-
-.main__news-container
-.news-container-title
-.to-page-more {
-  font-family: "Roboto Slab", serif;
-  font-size: 18px;
-  line-height: 1.2;
-  color: #333;
-  text-align: center;
-}
-
-.main__news-container .news-container-items {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.main__news-container
-.news-container-items
-.news-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #f9f9f9;
-  border: 1px solid #000;
-  margin: 0 30px;
-  padding: 20px;
-  width: 22.5%;
-  text-align: center;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.main__news-container
-.news-container-items
-.news-item
-.news-item-img {
-  max-width: 100%;
-  height: 50%;
-  border-radius: 10px;
-  display: block;
-}
-
-.main__news-container
-.news-container-items
-.news-item
-.btn-more-img {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-top: 10px;
-  margin-left: 70%;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 100%;
-  max-width: 20%;
-}
-
-.main__news-container
-.news-container-items
-.news-item
-.btn-more-img:hover {
-  background-color: #7e7e7e;
 }
 
 .footer {

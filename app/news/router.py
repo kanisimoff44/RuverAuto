@@ -17,5 +17,5 @@ async def get_all_news() -> list[SNewsAll]:
     Returns:
         list[SNewsAll]: list of news
     """
-    news = await NewsDAO.get_all()
-    return news
+    all_news = await NewsDAO.get_all()
+    return all_news

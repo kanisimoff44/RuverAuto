@@ -15,7 +15,7 @@
     {% endif %}
   </div>
   <div class="content-container-items">
-    {% for product in products %}
+    {% for product in products[:3] %}
       {% if product.is_active is true %}
         <div class="content-item">
           <div class="content-item-image">
@@ -26,8 +26,8 @@
                 <div class="label-false">Под заказ</div>
               {% endif %}
               <img src="{{ url_for('static', path='images/' + product.image_name|string)}}" alt="Фото продукта" class="content-item-img">
-              {% else %}
-                <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Фото продукта" class="content-item-img">
+            {% else %}
+              <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Фото продукта" class="content-item-img">
             {% endif %}
           </div>
           <div class="content-item-title">
@@ -43,6 +43,7 @@
           <div class="content-item-price-btn">
             {% if product.price %}
               <p class="price">{{ product.price }}₽</p>
+              <script src="{{ url_for('static', path='js/script.js') }}"></script>
             {% endif %}
             <a href="/pages/products/{{ product.id }}" class="btn-more">
               <img src="{{ url_for('static', path='images/btn.png') }}" alt="одробнее" class="btn-more-img">
@@ -76,19 +77,29 @@
     {% endif %}
   </div>
   <div class="news-container-items">
-    {% for one_news in news %}
-      {% if one_news.is_active is true %}
+    {% for news in all_news[:3] %}
+      {% if news.is_active is true %}
         <div class="news-item">
-          {% if one_news.news_image_name %}
-            <img src="{{ url_for('static', path='images/' + one_news.news_image_name|string)}}" alt="Фото продукта" class="news-item-img">
+          {% if news.news_image_name %}
+            <img src="{{ url_for('static', path='images/' + news.news_image_name|string)}}" alt="Фото продукта" class="news-item-img">
           {% else %}
             <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Фото продукта" class="news-item-img">
           {% endif %}
-          <h3>{{ one_news.title }}</h3>
-          <p>{{ one_news.description }}</p>
-          <a href="/pages/news/{{ one_news.id }}" class="btn-more">
-            <img src="{{ url_for('static', path='images/btn.png') }}" alt="Подробнее" class="btn-more-img">
-          </a>
+          <div class="news-item-title">
+            {% if news.title %}
+              <h3>{{ news.title }}</h3>
+            {% endif %}
+          </div>
+          <div class="news-item-desc">
+            {% if news.short_description %}
+              <p class="description">{{ news.short_description }}</p>
+            {% endif %}
+          </div>
+          <div class="news-item-btn">
+            <a href="/pages/news/{{ news.id }}" class="btn-more">
+              <img src="{{ url_for('static', path='images/btn.png') }}" alt="Подробнее" class="btn-more-img">
+            </a>
+          </div>
         </div>
       {% endif %}
     {% endfor %}

@@ -21,7 +21,7 @@ async def main_page(
     request: Request,
     products=Depends(get_all_products),
     content=Depends(get_content),
-    news=Depends(get_all_news)
+    all_news=Depends(get_all_news)
 ):
     """
     Main page
@@ -32,7 +32,7 @@ async def main_page(
             "request": request,
             "products": products,
             "content": content,
-            "news": news
+            "all_news": all_news
         },
     )
 
