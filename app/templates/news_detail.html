@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block detail %}
+<div class="detail">
+  {% if content.news_title %}
+    <h2 class="detail__title">{{ content.news_title }}</h2>
+  {% endif %}
+  <div class="product-content">
+    <div class="product-content__chars-img">
+      {% if news.news_image_name %}
+        <img src="{{ url_for('static', path='images/' + news.news_image_name|string)}}" alt="Изображение новости">
+      {% else %}
+        <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Изображение новости">
+      {% endif %}
+    </div>
+    <div class="product-content__detail">
+      <h1 class="product-content__name">{{ news.title }}</h1>
+      <p class="product-content__text">{{ news.description }}</p>
+    </div>
+  </div>
+</div>
+{% endblock detail %}

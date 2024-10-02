@@ -30,72 +30,97 @@
             {% endif %}
           </div>
         </div>
-        <ul class="header__nav-menu">
-          <li><a href="#" class="header__nav-link" class:name={condition}>Товары</a></li>
-          <li><a href="#" class="header__nav-link">Новости</a></li>
-          <li><a href="#" class="header__nav-link">Доставка и оплата</a></li>
-          <li><a href="#" class="header__nav-link">Контакты</a></li>
-        </ul>
-        <ul class="header__info-contacts">
-          <li class="header__info-phone">
-            {% if content.phone %}
-              <img src="{{ url_for('static', path='images/phone.png') }}" alt="phone-icon" class="phone-icon">
-              <div class="info-phone">
-                <h1 class="phone">{{ content.phone }}</h1>
-                <p class="phone-desc">Звонок по России бесплатный</p>
-              </div>
-            {% endif %}
-          </li>
-          <li class="header__info-email">
-            {% if content.email %}
-              <img src="{{ url_for('static', path='images/email.png')}}" alt="email-icon" class="email-icon">
-              <h2 class="email">{{ content.email }}</h2>
-            {% endif %}
-          </li>
-        </ul>
+        <div class="header__nav-menu">
+          <ul class="header__nav-menu-items">
+            <li class="header__nav-link"><a href="/pages/products" class="nav-link" class:name={condition}>Товары</a></li>
+            <li class="header__nav-link"><a href="/pages/news" class="nav-link">Новости</a></li>
+            <li class="header__nav-link"><a href="#" class="nav-link">Доставка и оплата</a></li>
+            <li class="header__nav-link"><a href="#" class="nav-link">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="header__info-contacts">
+          <ul class="header__info-contacts-items">
+            <li class="header__info-phone">
+              {% if content.phone %}
+                <img src="{{ url_for('static', path='images/phone.png') }}" alt="phone-icon" class="phone-icon">
+                <div class="info-phone">
+                  <h1 class="phone">{{ content.phone }}</h1>
+                  <p class="phone-desc">Звонок по России бесплатный</p>
+                </div>
+              {% endif %}
+            </li>
+            <li class="header__info-email">
+              {% if content.email %}
+                <img src="{{ url_for('static', path='images/email.png')}}" alt="email-icon" class="email-icon">
+                <h2 class="email">{{ content.email }}</h2>
+              {% endif %}
+            </li>
+          </ul>
+        </div>
       </div>
     </header>
     <main>
       {% block main %} {% endblock main %} 
-      {% block content %} {% endblock content %}
+      {% block detail %} {% endblock detail %}
     </main>
 
     <div class="footer">
-      <div class="footer__info">
-        {% if content.logo %}
-          <img src="{{ url_for('static', path='images/' + content.logo|string) }}" alt="Рувер-Авто" class="logo-icon">
-        {% endif %}
-        <div class="footer__about-us">
-          {% if content.header_title %}
-            <h1 class="footer__title">{{ content.header_title }}</h1>
+      <div class="footer__top">
+        <div class="footer__info">
+          {% if content.logo %}
+            <a href="/pages/main" class="logo-link">
+              <img src="{{ url_for('static', path='images/' + content.logo|string) }}" alt="Рувер-Авто" class="logo-icon">
+            </a>
           {% endif %}
-          {% if content.header_desc %}
-            <p class="footer__description">{{ content.header_desc }}</p>
-          {% endif %}
+          <div class="footer__about-us">
+            {% if content.header_title %}
+              <h1 class="footer__title">{{ content.header_title }}</h1>
+            {% endif %}
+            {% if content.header_desc %}
+              <p class="footer__description">{{ content.header_desc }}</p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="footer__nav-menu">
+          <ul class="footer__nav-menu-items">
+            <li class="footer__nav-link"><a href="/pages/products" class="nav-link" class:name={condition}>Товары</a></li>
+            <li class="footer__nav-link"><a href="/pages/news" class="nav-link">Новости</a></li>
+            <li class="footer__nav-link"><a href="#" class="nav-link">Доставка и оплата</a></li>
+            <li class="footer__nav-link"><a href="#" class="nav-link">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="footer__info-contacts">
+          <ul class="footer__info-contacts-items">
+            <li class="footer__info-phone">
+              {% if content.phone %}
+                <img src="{{ url_for('static', path='images/phone.png') }}" alt="phone-icon" class="phone-icon">
+                <div class="info-phone">
+                  <h1 class="phone">{{ content.phone }}</h1>
+                  <p class="phone-desc">Звонок по России бесплатный</p>
+                </div>
+              {% endif %}
+            </li>
+            <li class="footer__info-email">
+              {% if content.email %}
+                <img src="{{ url_for('static', path='images/email.png')}}" alt="email-icon" class="email-icon">
+                <h1 class="email">{{ content.email }}</h1>
+              {% endif %}
+            </li>
+            <li class="footer__info-address">
+              <img src="{{ url_for('static', path='images/address.png')}}" alt="address-icon" class="address-icon">
+              <div class="info-address">
+                <h1 class="address">630040 г. Новосибирск, ул.Кубовая 60</h1>
+                <a href="https://yandex.ru/maps/65/novosibirsk/house/kubovaya_ulitsa_60/bEsYfg5lTEMDQFtvfX1ycX9mZw==/?indoorLevel=1&ll=82.895565%2C55.130354&z=17.09" class="address-map">Смотреть на карте</a>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-      <ul class="footer__nav-menu">
-        <li><a href="#" class="footer__nav-link" class:name={condition}>Товары</a></li>
-        <li><a href="#" class="footer__nav-link">Новости</a></li>
-        <li><a href="#" class="footer__nav-link">Доставка и оплата</a></li>
-        <li><a href="#" class="footer__nav-link">Контакты</a></li>
-      </ul>
-      <ul class="footer__info-contacts">
-        <li class="footer__info-phone">
-          {% if content.phone %}
-            <img src="{{ url_for('static', path='images/phone.png') }}" alt="phone-icon" class="phone-icon">
-            <div class="info-phone">
-              <h1 class="phone">{{ content.phone }}</h1>
-              <p class="phone-desc">Звонок по России бесплатный</p>
-            </div>
-          {% endif %}
-        </li>
-        <li class="footer__info-email">
-          {% if content.email %}
-            <img src="{{ url_for('static', path='images/email.png')}}" alt="email-icon" class="email-icon">
-            <h2 class="email">{{ content.email }}</h2>
-          {% endif %}
-        </li>
-      </ul>
+      <div class="footer__bottom">
+        <p class="copyright">&copy; 2024 ООО «Рувер-авто»</p>
+        <p><a href="#" class="privacy-policy">Политика конфиденциальности</a></p>
+        <p><a href="#" class="user-agreement">Пользовательское соглашение</a></p>
+      </div>
+    </div>
   </body>
 </html>
