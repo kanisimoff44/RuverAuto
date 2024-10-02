@@ -4,7 +4,7 @@ from fastapi.templating import Jinja2Templates
 
 from app.products.router import get_all_products, get_product_by_id
 from app.main_content.router import get_content
-from app.news.router import get_all_news
+from app.news.router import get_all_news, get_news_by_id
 
 
 router = APIRouter(
@@ -37,6 +37,22 @@ async def main_page(
     )
 
 
+@router.get("/products", response_class=HTMLResponse)
+async def get_all_product(
+    request: Request,
+    products=Depends(get_all_products),
+    content=Depends(get_content)
+):
+    return templates.TemplateResponse(
+        "products.html",
+        {
+            "request": request,
+            "products": products,
+            "content": content
+        },
+    )
+
+
 @router.get("/products/{product_id}", response_class=HTMLResponse)
 async def get_product_by_id(
     request: Request,
@@ -44,7 +60,7 @@ async def get_product_by_id(
     content=Depends(get_content)
 ):
     return templates.TemplateResponse(
-        "products.html",
+        "product_detail.html",
         {
             "request": request,
             "product": product,
@@ -53,29 +69,32 @@ async def get_product_by_id(
     )
 
 
+@router.get("/news", response_class=HTMLResponse)
+async def get_all_product(
+    request: Request,
+    all_news=Depends(get_all_news),
+    content=Depends(get_content)
+):
+    return templates.TemplateResponse(
+        "news.html",
+        {
+            "request": request,
+            "all_news": all_news,
+            "content": content
+        },
+    )
 
-# RuverAutu/
-# ├── app/
-# │   ├── main.py
-# │   ├── database.py
-# │   ├── config.py
-# │   ├── products/
-# │   │   ├── router.py
-# │   │   └── models.py
-# │   ├── templates/
-# │   │   ├── base.html
-# │   │   ├── index.html
-# │   │   └── products.html
-# │   ├── static/
-# │   │   ├── css/
-# │   │   │   └── style.css
-# │   │   └── images/
-# │   │       └── logo.png
-# │   └── migrations/
-# │       ├── versions/
-# │       └── env.py
-# ├── alembic.ini
-# ├── requirements.txt
-# ├── .env
-# ├── .gitignore
-# └── README.md
+@router.get("/news/{news_id}", response_class=HTMLResponse)
+async def get_all_product(
+    request: Request,
+    news=Depends(get_news_by_id),
+    content=Depends(get_content)
+):
+    return templates.TemplateResponse(
+        "news_detail.html",
+        {
+            "request": request,
+            "news": news,
+            "content": content
+        },
+    )

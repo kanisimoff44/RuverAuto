@@ -3,7 +3,7 @@ from fastapi import APIRouter
 
 from app.products.dao import ProductsDAO
 from app.products.schemas import SProductsAll, SProductsDetail
-from app.products.utils import check_img
+from app.utils import check_product_img
 
 router = APIRouter(
     prefix="/products",
@@ -22,7 +22,7 @@ async def get_all_products() -> list[SProductsAll]:
     """
     products = await ProductsDAO.get_all()
     for product in products:
-        check_img(product)
+        check_product_img(product)
     
     return products
 
@@ -40,6 +40,6 @@ async def get_product_by_id(product_id: int) -> SProductsDetail:
         SProductDetail: _description_
     """
     product = await ProductsDAO.get_by_id(product_id)
-    check_img(product)
+    check_product_img(product)
 
     return product

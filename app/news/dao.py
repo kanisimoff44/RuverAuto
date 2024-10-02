@@ -4,6 +4,7 @@ from app.news.models import News
 from app.news.schemas import SNewsAll
 
 from sqlalchemy import select
+from sqlalchemy.orm import joinedload
 
 
 class NewsDAO(BaseDAO):
@@ -36,3 +37,12 @@ class NewsDAO(BaseDAO):
                     )
                 )
             return news_list
+
+    @classmethod
+    async def get_by_id(cls, news_id: int):
+        async with async_session_maker() as session:
+            query = select(cls.model).filter_by(id=news_id)
+            result = await session.execute(query)
+            news = result.unique().scalar_one_or_none()
+
+            return news
