@@ -1,6 +1,10 @@
 from typing import Optional, Annotated
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, Date
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from datetime import date
+from fastapi_storages import FileSystemStorage
+from fastapi_storages.integrations.sqlalchemy import FileType as _FileType
+from typing import Any
 
 from app.database import Base
 
@@ -39,3 +43,16 @@ class ProductsInfo(Base):
 
     def __str__(self):
         return f"{self.name_of_characteristic}: {self.value_of_characteristic}"
+
+
+class FileType(_FileType):
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(storage=FileSystemStorage(path='/tmp'), *args, **kwargs)
+
+
+class PriceList(Base):
+    __tablename__ = "price_lists"
+
+    id: Mapped[intpk]
+    file_name: Mapped[Optional[str]] = mapped_column(FileType())
+    upload_data: Mapped[Optional[date]] = mapped_column(Date)

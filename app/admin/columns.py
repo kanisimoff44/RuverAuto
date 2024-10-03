@@ -113,3 +113,18 @@ form_column_for_news = {
         "label": "Публикация"
     },
 }
+
+column_labels_for_price_list = {
+    "id": "Идентификатор",
+    "file_name": "Название файла",
+    "upload_data": "Дата обновления",
+}
+
+form_column_for_price_list = {
+    "file_name": {
+        "label": "Название файла"
+    },
+    "upload_data": {
+        "label": "Дата обновления"
+    },
+}

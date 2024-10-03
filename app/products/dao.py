@@ -1,6 +1,6 @@
 from app.dao.base import BaseDAO
 from app.database import async_session_maker
-from app.products.models import Products
+from app.products.models import Products, PriceList
 from app.products.schemas import SProductsAll
 
 from sqlalchemy import select
@@ -59,3 +59,14 @@ class ProductsDAO(BaseDAO):
             product = result.unique().scalar_one_or_none()
 
             return product
+
+
+class PriceListDAO(BaseDAO):
+    model = PriceList
+
+    @classmethod
+    async def get_price_list(cls, file_id: int):
+        async with async_session_maker() as session:
+            query = select(cls.model).where(cls.model.id == file_id)
+            price_list = await session.execute(query)
+            return price_list.scalars().first()

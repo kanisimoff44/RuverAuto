@@ -1,11 +1,12 @@
 from typing import Any
-from fastapi import Request
+from fastapi import Request, UploadFile, File, HTTPException
 from wtforms.validators import DataRequired
-from sqladmin import ModelView
+from sqladmin import ModelView, BaseView, expose
 from wtforms import TextAreaField, SelectField
+import aiofiles
 
 
-from app.products.models import Products, ProductsInfo
+from app.products.models import Products, ProductsInfo, PriceList
 from app.main_content.models import MainContent
 from app.news.models import News
 from app.users.models import Users
@@ -19,9 +20,12 @@ from app.admin.columns import (
     column_labels_for_users,
     form_column_for_users,
     column_labels_for_news,
-    form_column_for_news
+    form_column_for_news,
+    column_labels_for_price_list,
+    form_column_for_price_list,
 )
 from app.users.auth import get_password_hash
+from app.database import async_session_maker
 
 
 class ProductsAdmin(ModelView, model=Products):
@@ -55,6 +59,16 @@ class ProductsInfoAdmin(ModelView, model=ProductsInfo):
 
     column_labels = column_labels_for_products_info
     form_columns = form_columsn_for_products_info
+
+
+class PriceListAdmin(ModelView, model=PriceList):
+    column_list = [c.name for c in PriceList.__table__.c]
+    name = "Прайс-лист"
+    name_plural = "Прайс-листы"
+    icon = "fa-solid fa-money-bill-1-wave"
+
+    column_labels = column_labels_for_price_list
+    form_columns = form_column_for_price_list
 
 
 class MainContentAdmin(ModelView, model=MainContent):

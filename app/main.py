@@ -14,7 +14,8 @@ from app.admin.views import (
     ProductsInfoAdmin,
     MainContentAdmin,
     UsersAdmin,
-    NewsAdmin
+    NewsAdmin,
+    PriceListAdmin
 )
 from app.config import settings
 from app.logger import logger
@@ -52,12 +53,17 @@ app.include_router(pages_router)
 app.include_router(images_router)
 app.include_router(users_router)
 
-admin = Admin(app, engine, authentication_backend=authentication_backend)
+admin = Admin(
+    app,
+    engine,
+    authentication_backend=authentication_backend,
+)
 admin.add_view(MainContentAdmin)
 admin.add_view(ProductsAdmin)
 admin.add_view(ProductsInfoAdmin)
 admin.add_view(UsersAdmin)
 admin.add_view(NewsAdmin)
+admin.add_view(PriceListAdmin)
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
