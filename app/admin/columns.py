@@ -58,6 +58,8 @@ column_labels_for_main_content = {
     "brands_title": "Заголовок раздела `Бренды`",
     "product_title": "Заголовок на странице товара",
     "footer": "Подвал",
+    "privacy_policy": "Политика конфиденциальности",
+    "user_agreement": "Пользовательское соглашение",
 }
 
 form_column_for_main_content = {

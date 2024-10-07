@@ -64,6 +64,7 @@ async def get_product_by_id(
     content=Depends(get_content)
 ):
 
+    
     return templates.TemplateResponse(
         "product_detail.html",
         {
@@ -100,6 +101,34 @@ async def get_news_by_id(
         {
             "request": request,
             "news": news,
+            "content": content
+        },
+    )
+
+
+@router.get("/privacy-policy", response_class=HTMLResponse)
+async def privacy_policy(
+    request: Request,
+    content=Depends(get_content)
+):
+    return templates.TemplateResponse(
+        "privacy_policy.html",
+        {
+            "request": request,
+            "content": content
+        },
+    )
+
+
+@router.get("/user-agreement", response_class=HTMLResponse)
+async def user_agreement(
+    request: Request,
+    content=Depends(get_content)
+):
+    return templates.TemplateResponse(
+        "user_agreement.html",
+        {
+            "request": request,
             "content": content
         },
     )

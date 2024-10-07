@@ -62,6 +62,8 @@
     <main>
       {% block main %} {% endblock main %} 
       {% block detail %} {% endblock detail %}
+      {% block privacy_policy %} {% endblock privacy_policy %}
+      {% block user_agreement %} {% endblock user_agreement %}
     </main>
 
     <div class="footer">
@@ -118,8 +120,12 @@
       </div>
       <div class="footer__bottom">
         <p class="copyright">&copy; 2024 ООО «Рувер-авто»</p>
-        <p><a href="#" class="privacy-policy">Политика конфиденциальности</a></p>
-        <p><a href="#" class="user-agreement">Пользовательское соглашение</a></p>
+        {% if content.privacy_policy %}
+          <p><a href="/pages/privacy-policy" class="privacy-policy">Политика конфиденциальности</a></p>
+        {% endif %}
+        {% if content.user_agreement %}
+          <p><a href="/pages/user-agreement" class="user-agreement">Пользовательское соглашение</a></p>
+        {% endif %}
       </div>
     </div>
   </body>

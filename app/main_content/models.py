@@ -25,6 +25,8 @@ class MainContent(Base):
     brands_title: Mapped[Optional[str]]
     product_title: Mapped[Optional[str]]
     footer: Mapped[Optional[str]]
-    
+    privacy_policy: Mapped[Optional[str]]
+    user_agreement: Mapped[Optional[str]]
+
     def __str__(self):
         return f"Контент: {self.name}"

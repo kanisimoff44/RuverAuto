@@ -13,6 +13,7 @@ from app.config import settings
 from app.database import Base
 from app.products.models import Products
 from app.products.models import ProductsInfo
+from app.products.models import PriceList
 from app.main_content.models import MainContent
 from app.users.models import Users
 from app.news.models import News

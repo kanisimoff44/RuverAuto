@@ -977,3 +977,16 @@ th, td {
   font-size: 16px;
   color: #fff;
 }
+
+.container__privacy-policy
+.privacy-policy,
+.container__user-agreement
+.user-agreement {
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #000;
+  white-space: pre-line;
+  margin: 50px;
+}

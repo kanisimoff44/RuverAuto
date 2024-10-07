@@ -73,13 +73,18 @@ class PriceListAdmin(ModelView, model=PriceList):
 
 class MainContentAdmin(ModelView, model=MainContent):
     column_list = [c.name for c in MainContent.__table__.c]
-    name = "Поля контента"
-    name_plural = "Контент"
+    name = "Поле сайта"
+    name_plural = "Настройка сайта"
     icon = "fa-solid fa-brush"
     can_delete = False
 
     column_labels = column_labels_for_main_content
     form_columns = form_column_for_main_content
+
+    form_overrides = {
+        "privacy_policy": TextAreaField,
+        "user_agreement": TextAreaField,
+    }
 
 
 class UsersAdmin(ModelView, model=Users):
