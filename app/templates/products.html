@@ -12,8 +12,10 @@
     {% if content.products_title %}
       <h2 class="content-container-title">{{ content.products_title }}</h2>
     {% endif %}
-    <div>
-      <a href="{{ url_for('get_price_list', file_id=1) }}">Прайс-лист</a>
+    <div class="content-container-price-list">
+      {% if price_list %}
+        <a href="{{ url_for('get_price_list', file_id=price_list.id) }}" class="price-list">Прайс-лист</a>
+      {% endif %}
     </div>
   </div>
   <div class="content-container-items">

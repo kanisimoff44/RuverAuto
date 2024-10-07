@@ -410,6 +410,18 @@ body::-webkit-scrollbar {
   background-color: #7e7e7e;
 }
 
+.main__content-container
+.content-container-title-products
+.content-container-price-list
+.price-list {
+  font-size: 18px;
+  padding: 8px 30px;
+  color: #fff;
+  background-color: #017AC3;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
 .main__about-us-container {
   margin: 0 0 0 9%;
   display: flex;

@@ -2,7 +2,8 @@ from fastapi import APIRouter, Request, Depends
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-from app.products.router import get_all_products, get_product_by_id
+from app.products.dao import PriceListDAO
+from app.products.router import get_all_products, get_product_by_id, get_price_list
 from app.main_content.router import get_content
 from app.news.router import get_all_news, get_news_by_id
 
@@ -43,12 +44,15 @@ async def get_all_product(
     products=Depends(get_all_products),
     content=Depends(get_content)
 ):
+    price_list = await PriceListDAO.get_price_list()
+
     return templates.TemplateResponse(
         "products.html",
         {
             "request": request,
             "products": products,
-            "content": content
+            "content": content,
+            "price_list": price_list[-1],  # get last price-list if more than one
         },
     )
 
@@ -59,6 +63,7 @@ async def get_product_by_id(
     product=Depends(get_product_by_id),
     content=Depends(get_content)
 ):
+
     return templates.TemplateResponse(
         "product_detail.html",
         {
@@ -70,7 +75,7 @@ async def get_product_by_id(
 
 
 @router.get("/news", response_class=HTMLResponse)
-async def get_all_product(
+async def get_all_news(
     request: Request,
     all_news=Depends(get_all_news),
     content=Depends(get_content)
@@ -85,7 +90,7 @@ async def get_all_product(
     )
 
 @router.get("/news/{news_id}", response_class=HTMLResponse)
-async def get_all_product(
+async def get_news_by_id(
     request: Request,
     news=Depends(get_news_by_id),
     content=Depends(get_content)

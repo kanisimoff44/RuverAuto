@@ -25,7 +25,7 @@ async def get_all_products() -> list[SProductsAll]:
     products = await ProductsDAO.get_all()
     for product in products:
         check_product_img(product)
-    
+
     return products
 
 
@@ -48,12 +48,10 @@ async def get_product_by_id(product_id: int) -> SProductsDetail:
 
 
 @router.get("/download/{file_id}")
-async def get_price_list(file_id: int):
-    price_list = await PriceListDAO.get_price_list(file_id)
-    if not price_list:
-        raise FileNotFound
+async def get_price_list():
+    price_list = await PriceListDAO.get_price_list()
 
-    file_path = price_list.file_name
+    file_path = price_list[-1].file_name
 
     return FileResponse(
         path=file_path,
