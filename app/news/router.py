@@ -21,6 +21,7 @@ async def get_all_news() -> list[SNewsAll]:
     all_news = await NewsDAO.get_all()
     for news in all_news:
         check_news_img(news)
+        news.date_of_the_news = news.date_of_the_news.strftime("%d.%m.%Y")
 
     return all_news
 
@@ -39,5 +40,6 @@ async def get_news_by_id(news_id: int) -> SNewsDetail:
     """
     news = await NewsDAO.get_by_id(news_id)
     check_news_img(news)
+    news.date_of_the_news = news.date_of_the_news.strftime("%d.%m.%Y")
 
     return news

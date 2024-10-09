@@ -2,20 +2,28 @@
 
 {% block detail %}
 <div class="detail">
-  {% if content.one_news_title %}
-    <h2 class="detail__title">{{ content.one_news_title }}</h2>
+  {% if news.title %}
+    <h1 class="detail__title">{{ news.title }}</h1>
   {% endif %}
-  <div class="product-content">
-    <div class="product-content__chars-img">
-      {% if news.news_image_name %}
-        <img src="{{ url_for('static', path='images/' + news.news_image_name|string)}}" alt="Изображение новости">
-      {% else %}
-        <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Изображение новости">
-      {% endif %}
+  <div class="news-content">
+    <div class="news-content__image">
+      <div class="news-content__date-image">
+        {% if news.news_image_name %}
+          <img class="image" src="{{ url_for('static', path='images/' + news.news_image_name|string)}}" alt="Изображение новости">
+        {% else %}
+          <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Изображение новости">
+        {% endif %}
+        <div class="news-content__date">
+          {% if news.date_of_the_news %}
+            <h3 class="date">Дата публикации: {{ news.date_of_the_news }}</h3>
+          {% endif %}
+        </div>
+      </div>
     </div>
-    <div class="product-content__detail">
-      <h1 class="product-content__name">{{ news.title }}</h1>
-      <p class="product-content__text">{{ news.description }}</p>
+    <div class="news-content__detail">
+      {% if news.description %}
+        <p class="news-content__text">{{ news.description }}</p>
+      {% endif %}
     </div>
   </div>
 </div>

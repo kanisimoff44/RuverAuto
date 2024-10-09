@@ -46,7 +46,7 @@
               <script src="{{ url_for('static', path='js/script.js') }}"></script>
             {% endif %}
             <a href="/pages/products/{{ product.id }}" class="btn-more">
-              <img src="{{ url_for('static', path='images/btn.png') }}" alt="одробнее" class="btn-more-img">
+              <img src="{{ url_for('static', path='images/btn.png') }}" alt="одробнее">
             </a>
           </div>
         </div>
@@ -95,9 +95,12 @@
               <p class="description">{{ news.short_description }}</p>
             {% endif %}
           </div>
-          <div class="news-item-btn">
+          <div class="news-item-date-btn">
+            {% if news.date_of_the_news %}
+              <p class="date">{{ news.date_of_the_news }}</p>
+            {% endif %}
             <a href="/pages/news/{{ news.id }}" class="btn-more">
-              <img src="{{ url_for('static', path='images/btn.png') }}" alt="Подробнее" class="btn-more-img">
+              <img src="{{ url_for('static', path='images/btn.png') }}" alt="одробнее">
             </a>
           </div>
         </div>
