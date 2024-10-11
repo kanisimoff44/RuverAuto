@@ -12,7 +12,7 @@ router = APIRouter(
 
 
 @router.get("/")
-async def get_content() -> SMainContent:
+async def get_content() -> SMainContent | None:
     """
     Get all products
 

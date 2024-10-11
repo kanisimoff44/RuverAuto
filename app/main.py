@@ -11,8 +11,10 @@ from app.database import engine
 from app.admin.auth import authentication_backend
 from app.admin.views import (
     ProductsAdmin,
+    ProductsImagesAdmin,
     ProductsInfoAdmin,
     MainContentAdmin,
+    TextPagesAdmin,
     UsersAdmin,
     NewsAdmin,
     PriceListAdmin
@@ -25,6 +27,7 @@ from app.pages.router import router as pages_router
 from app.products.router import router as products_router
 from app.users.router import router as users_router
 from app.news.router import router as news_router
+from app.text_pages.router import router as text_pages_router
 
 
 @asynccontextmanager
@@ -49,6 +52,7 @@ app = FastAPI(
 app.include_router(products_router)
 app.include_router(news_router)
 app.include_router(content_router)
+app.include_router(text_pages_router)
 app.include_router(pages_router)
 app.include_router(images_router)
 app.include_router(users_router)
@@ -64,6 +68,8 @@ admin.add_view(ProductsInfoAdmin)
 admin.add_view(UsersAdmin)
 admin.add_view(NewsAdmin)
 admin.add_view(PriceListAdmin)
+admin.add_view(TextPagesAdmin)
+admin.add_view(ProductsImagesAdmin)
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 

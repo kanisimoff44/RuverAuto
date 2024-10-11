@@ -14,6 +14,7 @@ class ProductsDAO(BaseDAO):
     async def get_all(cls):
         get_products_with_info = (
             select(cls.model)
+            .options(joinedload(cls.model.images))
             .options(joinedload(cls.model.characteristics, innerjoin=False))
         )
         async with async_session_maker() as session:
@@ -24,18 +25,18 @@ class ProductsDAO(BaseDAO):
             for product in products:
                 short_description = ""
                 if product.description:
-                        short_description = (
-                            product.description[:50] + '...' 
-                            if len(product.description) > 50 
-                            else product.description[:50]
-                        )
+                    short_description = (
+                        product.description[:50] + '...'
+                        if len(product.description) > 50
+                        else product.description[:50]
+                    )
                 products_list.append(
                     SProductsAll(
                         id=product.id,
                         name=product.name,
                         description=product.description,
                         short_description=short_description,
-                        image_name=product.image_name,
+                        images=[image.image_name for image in product.images],
                         price=product.price,
                         label=product.label,
                         is_active=product.is_active,
@@ -52,6 +53,7 @@ class ProductsDAO(BaseDAO):
         async with async_session_maker() as session:
             query = (
                 select(cls.model)
+                .options(joinedload(cls.model.images))
                 .options(joinedload(cls.model.characteristics))
                 .filter_by(id=product_id)
             )
@@ -65,8 +67,8 @@ class PriceListDAO(BaseDAO):
     model = PriceList
 
     @classmethod
-    async def get_price_list(cls, file_id: int):
+    async def get_price_list(cls):
         async with async_session_maker() as session:
-            query = select(cls.model).where(cls.model.id == file_id)
+            query = select(cls.model)
             price_list = await session.execute(query)
-            return price_list.scalars().first()
+            return price_list.scalars().all()

@@ -1,5 +1,5 @@
-from typing import Optional, Annotated
-from sqlalchemy import ForeignKey, Date
+from typing import Optional, Annotated, List
+from sqlalchemy import JSON, ForeignKey, Date
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import date
 from fastapi_storages import FileSystemStorage
@@ -13,11 +13,10 @@ intpk = Annotated[int, mapped_column(primary_key=True)]
 
 class Products(Base):
     __tablename__ = "products"
-    
+
     id: Mapped[intpk]
     name: Mapped[Optional[str]]
     description: Mapped[Optional[str]]
-    image_name: Mapped[Optional[str]]
     price: Mapped[Optional[int]]
     label: Mapped[Optional[bool]]
     is_active: Mapped[bool]
@@ -26,9 +25,32 @@ class Products(Base):
         back_populates="product",
         cascade="all, delete-orphan"
     )
-    
+
+    images: Mapped[list["ProductsImages"]] = relationship(
+        back_populates="product",
+        cascade="all, delete-orphan"
+    )
+
     def __str__(self):
         return f"Товар: {self.name}"
+
+
+class ImageType(_FileType):
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(storage=FileSystemStorage(path='app/static/images'), *args, **kwargs)
+
+
+class ProductsImages(Base):
+    __tablename__ = "products_images"
+
+    id: Mapped[intpk]
+    product_id: Mapped[int] = mapped_column(ForeignKey("products.id", ondelete="CASCADE"))
+    image_name: Mapped[Optional[str]] = mapped_column(ImageType())
+
+    product: Mapped["Products"] = relationship(back_populates="images")
+
+    def __str__(self):
+        return f"Изображение: {self.image_name.split('/')[-1]}"
 
 
 class ProductsInfo(Base):
@@ -47,7 +69,7 @@ class ProductsInfo(Base):
 
 class FileType(_FileType):
     def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(storage=FileSystemStorage(path='/tmp'), *args, **kwargs)
+        super().__init__(storage=FileSystemStorage(path='app/files'), *args, **kwargs)
 
 
 class PriceList(Base):

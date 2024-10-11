@@ -5,11 +5,14 @@ from app.news.schemas import SNewsDetail
 
 
 def check_product_img(product: SProductsDetail) -> str:
-    image_directory = "app/static/images/"
-    if not os.path.exists(f"{image_directory}{product.image_name}"):
-        product.image_name = None
-    
-    return product.image_name
+    names_images = []
+    if len(product.images) == 0:
+        product.images = None
+    else:
+        for image in product.images:
+            names_images.append(image.split("/")[-1])
+    product.images = names_images
+    return product.images
 
 
 def check_news_img(news: SNewsDetail) -> str:

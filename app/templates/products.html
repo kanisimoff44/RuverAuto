@@ -23,13 +23,13 @@
       {% if product.is_active is true %}
         <div class="content-item">
           <div class="content-item-image">
-            {% if product.image_name %}
+            {% if product.images %}
               {% if product.label is true %}
                 <div class="label-true">В наличии в Новосибирске</div>
               {% elif product.label is false %}
                 <div class="label-false">Под заказ</div>
               {% endif %}
-              <img src="{{ url_for('static', path='images/' + product.image_name|string)}}" alt="Фото продукта" class="content-item-img">
+              <img src="{{ url_for('static', path='images/' + product.images[0]|string)}}" alt="Фото продукта" class="content-item-img">
             {% else %}
               <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Фото продукта" class="content-item-img">
             {% endif %}
@@ -47,7 +47,7 @@
           <div class="content-item-price-btn">
             {% if product.price %}
               <p class="price">{{ product.price }}₽</p>
-              <script src="{{ url_for('static', path='js/script.js') }}"></script>
+              <script src="{{ url_for('static', path='js/convert_price.js') }}"></script>
             {% endif %}
             <a href="/pages/products/{{ product.id }}" class="btn-more">
               <img src="{{ url_for('static', path='images/btn.png') }}" alt="одробнее" class="btn-more-img">
@@ -58,5 +58,4 @@
     {% endfor %}
   </div>
 </div>
-
 {% endblock main %}

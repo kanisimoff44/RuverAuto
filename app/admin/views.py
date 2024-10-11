@@ -1,15 +1,15 @@
 from typing import Any
-from fastapi import Request, UploadFile, File, HTTPException
-from wtforms.validators import DataRequired
-from sqladmin import ModelView, BaseView, expose
-from wtforms import TextAreaField, SelectField
+from fastapi import Request
+from sqladmin import ModelView
+from starlette.datastructures import UploadFile
+from wtforms import TextAreaField, MultipleFileField
 import aiofiles
 
-
-from app.products.models import Products, ProductsInfo, PriceList
+from app.products.models import Products, ProductsInfo, PriceList, ProductsImages
 from app.main_content.models import MainContent
 from app.news.models import News
 from app.users.models import Users
+from app.text_pages.models import TextPages
 from app.admin.columns import (
     column_labels_for_products,
     column_labels_for_products_info,
@@ -23,21 +23,26 @@ from app.admin.columns import (
     form_column_for_news,
     column_labels_for_price_list,
     form_column_for_price_list,
+    column_labels_for_text_pages,
+    form_column_for_text_pages,
+    column_labels_for_producst_images,
+    form_column_for_producst_images
 )
 from app.users.auth import get_password_hash
-from app.database import async_session_maker
+from werkzeug.utils import secure_filename
 
 
 class ProductsAdmin(ModelView, model=Products):
     column_list = [
         Products.id,
         Products.name,
-        Products.image_name,
+        Products.images,
         Products.price,
         Products.label,
         Products.is_active,
+        Products.characteristics,
         Products.description
-    ] + [Products.characteristics]
+    ]
 
     name = "Товар"
     name_plural = "Товары"
@@ -49,6 +54,16 @@ class ProductsAdmin(ModelView, model=Products):
     form_overrides = {
         "description": TextAreaField,
     }
+    
+
+class ProductsImagesAdmin(ModelView, model=ProductsImages):
+    column_list = [c.name for c in ProductsImages.__table__.c] + [ProductsImages.product]
+    name = "Изображения товаров"
+    name_plural = "Изображение товара"
+    icon = "fa-solid fa-image"
+
+    column_labels = column_labels_for_producst_images
+    form_columns = form_column_for_producst_images
 
 
 class ProductsInfoAdmin(ModelView, model=ProductsInfo):
@@ -81,7 +96,20 @@ class MainContentAdmin(ModelView, model=MainContent):
     column_labels = column_labels_for_main_content
     form_columns = form_column_for_main_content
 
+
+class TextPagesAdmin(ModelView, model=TextPages):
+    column_list = [c.name for c in TextPages.__table__.c]
+    name = "Текстовая страница"
+    name_plural = "Текстовые страницы"
+    icon = "fa-solid fa-file-lines"
+    can_delete = False
+    
+    column_labels = column_labels_for_text_pages
+    form_columns = form_column_for_text_pages
+    
     form_overrides = {
+        "our_contacts": TextAreaField,
+        "delivery_and_payment": TextAreaField,
         "privacy_policy": TextAreaField,
         "user_agreement": TextAreaField,
     }

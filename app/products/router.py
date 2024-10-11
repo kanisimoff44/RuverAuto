@@ -5,7 +5,7 @@ from fastapi.responses import FileResponse
 from app.products.dao import ProductsDAO, PriceListDAO
 from app.products.schemas import SProductsAll, SProductsDetail
 from app.utils import check_product_img
-from app.exceptions import FileNotFound
+from fastapi.responses import RedirectResponse
 
 router = APIRouter(
     prefix="/products",
@@ -42,7 +42,8 @@ async def get_product_by_id(product_id: int) -> SProductsDetail:
         SProductDetail: _description_
     """
     product = await ProductsDAO.get_by_id(product_id)
-    check_product_img(product)
+    print(product)
+    # check_product_img(product)
 
     return product
 
@@ -52,6 +53,9 @@ async def get_price_list():
     price_list = await PriceListDAO.get_price_list()
 
     file_path = price_list[-1].file_name
+
+    if not file_path:
+        return RedirectResponse("/pages/products")
 
     return FileResponse(
         path=file_path,

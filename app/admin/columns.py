@@ -2,10 +2,11 @@ column_labels_for_products = {
     "id": "Идентификатор",
     "name": "Название",
     "description": "Описание",
-    "image_name": "Фото",
+    "images": "Фото",
     "price": "Цена",
     "label": "Лейбл",
-    "is_active": "Публикация"
+    "is_active": "Публикация",
+    "characteristics": "Характеристики"
 }
 
 form_columns_for_products = {
@@ -14,9 +15,6 @@ form_columns_for_products = {
     },
     "description": {
         "label": "Описание"
-    },
-    "image_name": {
-        "label": "Фото"
     },
     "price": {
         "label": "Цена"
@@ -34,6 +32,7 @@ column_labels_for_products_info = {
     "product_id": "Ссылка на товар",
     "name_of_characteristic": "Название характеристики",
     "value_of_characteristic": "Значение характеристики",
+    "product": "Товар"
 }
 
 form_columsn_for_products_info = {
@@ -49,17 +48,15 @@ column_labels_for_main_content = {
     "header_desc": "Описание в шапке",
     "main_title": "Заголовок страницы",
     "main_desc": "Описание страницы",
-    "about_us_image": "Изображение раздела `О нас`",
-    "about_us_title": "Заголовок раздела `О нас`",
-    "about_us_desc": "Описание раздела `О нас`",
-    "products_title": "Заголовок раздела `Товары`",
-    "news_title": "Заголовок раздела `Новости`",
-    "one_news_title": "Заголовок для старницы с новостью",
-    "brands_title": "Заголовок раздела `Бренды`",
-    "product_title": "Заголовок на странице товара",
+    "products_title": "Заголовок раздела #1",
+    "about_us_image": "Изображение раздела #2",
+    "about_us_title": "Заголовок раздела #2",
+    "about_us_desc": "Описание раздела #2",
+    "news_title": "Заголовок раздела #3",
+    "brands_title": "Заголовок раздела #4",
+    "address": "Адрес",
+    "link_to_the_map": "Ссылка в Яндекс.Карты",
     "footer": "Подвал",
-    "privacy_policy": "Политика конфиденциальности",
-    "user_agreement": "Пользовательское соглашение",
 }
 
 form_column_for_main_content = {
@@ -129,4 +126,38 @@ form_column_for_price_list = {
     "upload_data": {
         "label": "Дата обновления"
     },
+}
+
+column_labels_for_text_pages = {
+    "id": "Идентификатор",
+    "our_contacts": "Контакты",
+    "delivery_and_payment": "Доставка и оплата",
+    "privacy_policy": "Политика конфиденциальности",
+    "user_agreement": "Пользовательское соглашение",
+}
+
+form_column_for_text_pages = {
+    "our_contacts": {
+        "label": "Контакты"
+    },
+    "delivery_and_payment": {
+        "label": "Доставка и оплата"
+    },
+    "privacy_policy": {
+        "label": "Политика конфиденциальности"
+    },
+    "user_agreement": {
+        "label": "Пользовательское соглашение"
+    },
+}
+
+column_labels_for_producst_images = {
+    "id": "Идентификатор",
+    "product_id": "Ссылка на товар",
+    "image_name": "Название изображения",
+    "product": "Товар"
+}
+
+form_column_for_producst_images = {
+
 }

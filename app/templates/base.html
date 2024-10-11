@@ -10,6 +10,8 @@
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Open+Sans:wght@400;600&display=swap"/>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
   </head>
 
   <body>
@@ -32,10 +34,18 @@
         </div>
         <div class="header__nav-menu">
           <ul class="header__nav-menu-items">
-            <li class="header__nav-link"><a href="/pages/products" class="nav-link" class:name={condition}>Товары</a></li>
-            <li class="header__nav-link"><a href="/pages/news" class="nav-link">Новости</a></li>
-            <li class="header__nav-link"><a href="#" class="nav-link">Доставка и оплата</a></li>
-            <li class="header__nav-link"><a href="#" class="nav-link">Контакты</a></li>
+            {% if products %}
+              <li class="header__nav-link"><a href="/pages/products" class="nav-link" class:name={condition}>Товары</a></li>
+            {% endif %}
+            {% if all_news %}
+              <li class="header__nav-link"><a href="/pages/news" class="nav-link">Новости</a></li>
+            {% endif %}
+            {% if page.delivery_and_payment %}
+              <li class="header__nav-link"><a href="/pages/delivery-and-payment" class="nav-link">Доставка и оплата</a></li>
+            {% endif %}
+            {% if page.our_contacts %}
+              <li class="header__nav-link"><a href="/pages/our-contacts" class="nav-link">Контакты</a></li>
+            {% endif %}            
           </ul>
         </div>
         <div class="header__info-contacts">
@@ -64,6 +74,8 @@
       {% block detail %} {% endblock detail %}
       {% block privacy_policy %} {% endblock privacy_policy %}
       {% block user_agreement %} {% endblock user_agreement %}
+      {% block delivery_and_payment %} {% endblock delivery_and_payment %}
+      {% block our_contacts %} {% endblock our_contacts %}
     </main>
 
     <div class="footer">
@@ -85,10 +97,18 @@
         </div>
         <div class="footer__nav-menu">
           <ul class="footer__nav-menu-items">
-            <li class="footer__nav-link"><a href="/pages/products" class="nav-link" class:name={condition}>Товары</a></li>
-            <li class="footer__nav-link"><a href="/pages/news" class="nav-link">Новости</a></li>
-            <li class="footer__nav-link"><a href="#" class="nav-link">Доставка и оплата</a></li>
-            <li class="footer__nav-link"><a href="#" class="nav-link">Контакты</a></li>
+            {% if products %}
+              <li class="footer__nav-link"><a href="/pages/products" class="nav-link" class:name={condition}>Товары</a></li>
+            {% endif %}
+            {% if all_news %}
+              <li class="footer__nav-link"><a href="/pages/news" class="nav-link">Новости</a></li>
+            {% endif %}
+            {% if page.delivery_and_payment %}
+              <li class="footer__nav-link"><a href="/pages/delivery-and-payment" class="nav-link">Доставка и оплата</a></li>
+            {% endif %}
+            {% if page.our_contacts %}
+              <li class="footer__nav-link"><a href="/pages/our-contacts" class="nav-link">Контакты</a></li>
+            {% endif %}
           </ul>
         </div>
         <div class="footer__info-contacts">
@@ -109,10 +129,16 @@
               {% endif %}
             </li>
             <li class="footer__info-address">
-              <img src="{{ url_for('static', path='images/address.png')}}" alt="address-icon" class="address-icon">
+              {% if content.address %}
+                <img src="{{ url_for('static', path='images/address.png')}}" alt="address-icon" class="address-icon">
+              {% endif %}
               <div class="info-address">
-                <h1 class="address">630040 г. Новосибирск, ул.Кубовая 60</h1>
-                <a href="https://yandex.ru/maps/65/novosibirsk/house/kubovaya_ulitsa_60/bEsYfg5lTEMDQFtvfX1ycX9mZw==/?indoorLevel=1&ll=82.895565%2C55.130354&z=17.09" class="address-map">Смотреть на карте</a>
+                {% if content.address %}
+                  <h1 class="address">{{ content.address }}</h1>
+                {% endif %}
+                {% if content.link_to_the_map %}
+                  <a href="{{ content.link_to_the_map }}" class="address-map">Смотреть на карте</a>
+                {% endif %}
               </div>
             </li>
           </ul>
@@ -120,10 +146,10 @@
       </div>
       <div class="footer__bottom">
         <p class="copyright">&copy; 2024 ООО «Рувер-авто»</p>
-        {% if content.privacy_policy %}
+        {% if page.privacy_policy %}
           <p><a href="/pages/privacy-policy" class="privacy-policy">Политика конфиденциальности</a></p>
         {% endif %}
-        {% if content.user_agreement %}
+        {% if page.user_agreement %}
           <p><a href="/pages/user-agreement" class="user-agreement">Пользовательское соглашение</a></p>
         {% endif %}
       </div>

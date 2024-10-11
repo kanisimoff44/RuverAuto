@@ -17,6 +17,7 @@ from app.products.models import PriceList
 from app.main_content.models import MainContent
 from app.users.models import Users
 from app.news.models import News
+from app.text_pages.models import TextPages
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
