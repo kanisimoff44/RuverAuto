@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
 {% block detail %}
+<!-- Заголовок Новости -->
 <div class="detail">
   {% if news.title %}
     <h1 class="detail__title">{{ news.title }}</h1>
   {% endif %}
+
+  <!-- Изобюражение Новости -->
   <div class="news-content">
     <div class="news-content__image">
       <div class="news-content__date-image">
@@ -13,6 +16,8 @@
         {% else %}
           <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Изображение новости">
         {% endif %}
+
+        <!-- Дата публикации Новости -->
         <div class="news-content__date">
           {% if news.date_of_the_news %}
             <h3 class="date">Дата публикации: {{ news.date_of_the_news }}</h3>
@@ -20,6 +25,8 @@
         </div>
       </div>
     </div>
+
+    <!-- Описание Новости -->
     <div class="news-content__detail">
       {% if news.description %}
         <p class="news-content__text">{{ news.description }}</p>

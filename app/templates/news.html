@@ -1,6 +1,7 @@
 {% extends "base.html" %} 
 
 {% block main %}
+<!-- Заголовок под шапкой -->
 <div class="main__title">
   {% if content.main_desc %}
     <p class="title">{{ content.main_desc }}</p>
@@ -9,29 +10,39 @@
 
 <div class="main__news-container">
   <div class="news-container-title">
+      <!-- Заголовок раздела -->
     {% if content.news_title %}
       <h2 class="news-title">{{ content.news_title }}</h2>
     {% endif %}
   </div>
+
+  <!-- Список Новостей -->
   <div class="news-container-items">
     {% for news in all_news %}
       {% if news.is_active is true %}
+        <!-- Изображение Новости -->
         <div class="news-item">
           {% if news.news_image_name %}
-            <img src="{{ url_for('static', path='images/' + news.news_image_name|string)}}" alt="Фото продукта" class="news-item-img">
+            <img src="{{ url_for('static', path='images/' + news.news_image_name|string)}}" alt="Фото новости" class="image">
           {% else %}
-            <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Фото продукта" class="news-item-img">
+            <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Фото новости" class="image">
           {% endif %}
+
+          <!-- Заголовок Новости -->
           <div class="news-item-title">
             {% if news.title %}
               <h3>{{ news.title }}</h3>
             {% endif %}
           </div>
+
+          <!-- Описание Новости -->
           <div class="news-item-desc">
             {% if news.short_description %}
               <p class="description">{{ news.short_description }}</p>
             {% endif %}
           </div>
+
+          <!-- Дата публикации Новости -->
           <div class="news-item-date-btn">
             {% if news.date_of_the_news %}
               <p class="date">{{ news.date_of_the_news }}</p>

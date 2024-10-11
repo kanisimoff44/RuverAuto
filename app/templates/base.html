@@ -15,14 +15,18 @@
   </head>
 
   <body>
+  <div class=wrapper>
     <header>
       <div class="header">
         <div class="header__info">
+          <!-- Лого -->
           {% if content.logo %}
             <a href="/pages/main" class="logo-link">
               <img src="{{ url_for('static', path='images/' + content.logo|string) }}" alt="Рувер-Авто" class="logo-icon">
             </a>
           {% endif %}
+
+          <!-- Название и описание -->
           <div class="header__about-us">
             {% if content.header_title %}
               <h1 class="header__title">{{ content.header_title }}</h1>
@@ -32,6 +36,8 @@
             {% endif %}
           </div>
         </div>
+
+        <!-- Меню -->
         <div class="header__nav-menu">
           <ul class="header__nav-menu-items">
             {% if products %}
@@ -48,8 +54,11 @@
             {% endif %}            
           </ul>
         </div>
+
+        <!-- Контакты -->
         <div class="header__info-contacts">
           <ul class="header__info-contacts-items">
+            <!-- Телефон -->
             <li class="header__info-phone">
               {% if content.phone %}
                 <img src="{{ url_for('static', path='images/phone.png') }}" alt="phone-icon" class="phone-icon">
@@ -59,6 +68,8 @@
                 </div>
               {% endif %}
             </li>
+
+            <!-- Email -->
             <li class="header__info-email">
               {% if content.email %}
                 <img src="{{ url_for('static', path='images/email.png')}}" alt="email-icon" class="email-icon">
@@ -81,11 +92,14 @@
     <div class="footer">
       <div class="footer__top">
         <div class="footer__info">
+          <!-- Лого -->
           {% if content.logo %}
             <a href="/pages/main" class="logo-link">
               <img src="{{ url_for('static', path='images/' + content.logo|string) }}" alt="Рувер-Авто" class="logo-icon">
             </a>
           {% endif %}
+
+          <!-- Название и описание -->
           <div class="footer__about-us">
             {% if content.header_title %}
               <h1 class="footer__title">{{ content.header_title }}</h1>
@@ -95,6 +109,8 @@
             {% endif %}
           </div>
         </div>
+
+        <!-- Меню -->
         <div class="footer__nav-menu">
           <ul class="footer__nav-menu-items">
             {% if products %}
@@ -111,8 +127,11 @@
             {% endif %}
           </ul>
         </div>
+
+        <!-- Контакты -->
         <div class="footer__info-contacts">
           <ul class="footer__info-contacts-items">
+            <!-- Телефон -->
             <li class="footer__info-phone">
               {% if content.phone %}
                 <img src="{{ url_for('static', path='images/phone.png') }}" alt="phone-icon" class="phone-icon">
@@ -122,12 +141,16 @@
                 </div>
               {% endif %}
             </li>
+
+            <!-- Email -->
             <li class="footer__info-email">
               {% if content.email %}
                 <img src="{{ url_for('static', path='images/email.png')}}" alt="email-icon" class="email-icon">
                 <h1 class="email">{{ content.email }}</h1>
               {% endif %}
             </li>
+
+            <!-- Адрес -->
             <li class="footer__info-address">
               {% if content.address %}
                 <img src="{{ url_for('static', path='images/address.png')}}" alt="address-icon" class="address-icon">
@@ -154,5 +177,6 @@
         {% endif %}
       </div>
     </div>
+  </div>
   </body>
 </html>
