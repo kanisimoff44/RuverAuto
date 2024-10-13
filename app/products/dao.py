@@ -1,10 +1,10 @@
-from app.dao.base import BaseDAO
-from app.database import async_session_maker
-from app.products.models import Products, PriceList
-from app.products.schemas import SProductsAll
-
 from sqlalchemy import select
 from sqlalchemy.orm import joinedload
+
+from app.dao.base import BaseDAO
+from app.database import async_session_maker
+from app.products.models import PriceList, Products
+from app.products.schemas import SProductsAll
 
 
 class ProductsDAO(BaseDAO):
@@ -19,7 +19,7 @@ class ProductsDAO(BaseDAO):
         )
         async with async_session_maker() as session:
             result = await session.execute(get_products_with_info)
-            products = result.unique().scalars().all()
+            products = result.scalars().unique().all()
 
             products_list: list = []
             for product in products:
@@ -59,6 +59,7 @@ class ProductsDAO(BaseDAO):
             )
             result = await session.execute(query)
             product = result.unique().scalar_one_or_none()
+            print(product)
 
             return product
 

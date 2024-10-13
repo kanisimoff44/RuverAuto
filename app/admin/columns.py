@@ -22,6 +22,12 @@ form_columns_for_products = {
     "label": {
         "label": "Лейбл"
     },
+    "characteristics": {
+        "label": "Характеристики"
+    },
+    "images": {
+        "label": "Фото"
+    },
     "is_active": {
         "label": "Публикация"
     }
@@ -35,82 +41,11 @@ column_labels_for_products_info = {
     "product": "Товар"
 }
 
-form_columsn_for_products_info = {
-
-}
-
-column_labels_for_main_content = {
+column_labels_for_producst_images = {
     "id": "Идентификатор",
-    "logo": "Логотип",
-    "phone": "Телефон",
-    "email": "Почта",
-    "header_title": "Заголовок в шапке",
-    "header_desc": "Описание в шапке",
-    "main_title": "Заголовок страницы",
-    "main_desc": "Описание страницы",
-    "products_title": "Заголовок раздела #1",
-    "about_us_image": "Изображение раздела #2",
-    "about_us_title": "Заголовок раздела #2",
-    "about_us_desc": "Описание раздела #2",
-    "news_title": "Заголовок раздела #3",
-    "brands_title": "Заголовок раздела #4",
-    "address": "Адрес",
-    "link_to_the_map": "Ссылка в Яндекс.Карты",
-    "footer": "Подвал",
-}
-
-form_column_for_main_content = {
-    
-}
-
-column_labels_for_users = {
-    "email": "Почта",
-    "hashed_password": "Пароль",
-    "is_active": "Активный",
-    "is_superuser": "Создатель",
-    "role": "Роль",
-}
-
-form_column_for_users = {
-    "email": {
-        "label": "Почта"
-    },
-    "hashed_password": {
-        "label": "Пароль"
-    },
-    "is_active": {
-        "label": "Активный"
-    },
-    "role": {
-        "label": "Роль"
-    },
-}
-
-column_labels_for_news = {
-    "id": "Идентификатор",
-    "title": "Заголовок",
-    "date_of_the_news": "Дата",
-    "news_image_name": "Изображение",
-    "is_active": "Публикация",
-    "description": "Описание новости",
-}
-
-form_column_for_news = {
-    "title": {
-        "label": "Заголовок"
-    },
-    "description": {
-        "label": "Описание новости"
-    },
-    "date_of_the_news": {
-        "label": "Дата"
-    },
-    "news_image_name": {
-        "label": "Изображение"
-    },
-    "is_active": {
-        "label": "Публикация"
-    },
+    "product_id": "Идентификатор товара",
+    "image_name": "Название изображения",
+    "product": "Товар"
 }
 
 column_labels_for_price_list = {
@@ -128,36 +63,134 @@ form_column_for_price_list = {
     },
 }
 
+column_labels_for_main_content = {
+    "id": "Идентификатор",
+    "logo": "Логотип",
+    "phone": "Телефон",
+    "email": "Почта",
+    "header_title": "Заголовок в шапке",
+    "header_desc": "Описание в шапке",
+    "main_desc": "Описание страницы",
+    "products_title": "Заголовок раздела #1",
+    "about_us_title": "Заголовок раздела #2",
+    "images": "Изображение раздела #2",
+    "about_us_desc": "Описание раздела #2",
+    "news_title": "Заголовок раздела #3",
+    "brands_title": "Заголовок раздела #4",
+    "address": "Адрес",
+    "link_to_the_map": "Ссылка в Яндекс.Карты",
+    "footer": "Подвал",
+}
+
+form_column_for_main_content = {
+    "logo": {
+        "label": "Логотип"
+    },
+    "phone": {
+        "label": "Телефон"
+    },
+    "email": {
+        "label": "Почта"
+    },
+    "header_title": {
+        "label": "Заголовок в шапке"
+    },
+    "header_desc": {
+        "label": "Описание в шапке"
+    },
+    "main_desc": {
+        "label": "Описание страницы"
+    },
+    "products_title": {
+        "label": "Заголовок раздела #1"
+    },
+    "about_us_title": {
+        "label": "Заголовок раздела #2"
+    },
+    "images": {
+        "label": "Изображение раздела #2"
+    },
+    "about_us_desc": {
+        "label": "Описание раздела #2"
+    },
+    "news_title": {
+        "label": "Заголовок раздела #3"
+    },
+    "brands_title": {
+        "label": "Заголовок раздела #4"
+    },
+    "address": {
+        "label": "Адрес"
+    },
+    "link_to_the_map": {
+        "label": "Ссылка на Яндекс.Карты"
+    },
+    "footer": {
+        "label": "Подвал"
+    },
+}
+
+column_labels_for_users = {
+    "username": "Логин",
+    "hashed_password": "Пароль",
+    "is_active": "Активный",
+    "is_superuser": "Создатель",
+    "role": "Роль",
+}
+
+form_column_for_users = {
+    "username": {
+        "label": "Логин"
+    },
+    "hashed_password": {
+        "label": "Пароль"
+    },
+    "is_active": {
+        "label": "Активный"
+    },
+    "role": {
+        "label": "Роль"
+    },
+}
+
+column_labels_for_news = {
+    "id": "Идентификатор",
+    "title": "Заголовок",
+    "date_of_the_news": "Дата",
+    "images": "Изображения",
+    "is_active": "Публикация",
+    "description": "Описание новости",
+}
+
+form_column_for_news = {
+    "title": {
+        "label": "Заголовок"
+    },
+    "description": {
+        "label": "Описание новости"
+    },
+    "date_of_the_news": {
+        "label": "Дата"
+    },
+    "images": {
+        "label": "Изображения"
+    },
+    "is_active": {
+        "label": "Публикация"
+    },
+}
+
+column_labels_for_news_images = {
+    "id": "Идентификатор",
+    "news_id": "Идентификатор новости",
+    "news_image_name": "Название изображения",
+    "the_news": "Новость"
+}
+
 column_labels_for_text_pages = {
     "id": "Идентификатор",
     "our_contacts": "Контакты",
     "delivery_and_payment": "Доставка и оплата",
     "privacy_policy": "Политика конфиденциальности",
     "user_agreement": "Пользовательское соглашение",
-}
-
-form_column_for_text_pages = {
-    "our_contacts": {
-        "label": "Контакты"
-    },
-    "delivery_and_payment": {
-        "label": "Доставка и оплата"
-    },
-    "privacy_policy": {
-        "label": "Политика конфиденциальности"
-    },
-    "user_agreement": {
-        "label": "Пользовательское соглашение"
-    },
-}
-
-column_labels_for_producst_images = {
-    "id": "Идентификатор",
-    "product_id": "Ссылка на товар",
-    "image_name": "Название изображения",
-    "product": "Товар"
-}
-
-form_column_for_producst_images = {
-
 }

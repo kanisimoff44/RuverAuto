@@ -1,7 +1,10 @@
-import os
+from typing import Any
 
-from app.products.schemas import SProductsDetail
+from fastapi_storages import FileSystemStorage
+from fastapi_storages.integrations.sqlalchemy import FileType
+
 from app.news.schemas import SNewsDetail
+from app.products.schemas import SProductsDetail
 
 
 def check_product_img(product: SProductsDetail) -> str:
@@ -16,8 +19,21 @@ def check_product_img(product: SProductsDetail) -> str:
 
 
 def check_news_img(news: SNewsDetail) -> str:
-    image_directory = "app/static/images/"
-    if not os.path.exists(f"{image_directory}{news.news_image_name}"):
-        news.image_name = None
-    
-    return news.news_image_name
+    names_images = []
+    if len(news.images) == 0:
+        news.images = None
+    else:
+        for image in news.images:
+            names_images.append(image.split("/")[-1])
+    news.images = names_images
+    return news.images
+
+
+class ImageType(FileType):
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(storage=FileSystemStorage(path='app/static/images'), *args, **kwargs)
+
+
+class FileType(FileType):
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(storage=FileSystemStorage(path='app/files'), *args, **kwargs)

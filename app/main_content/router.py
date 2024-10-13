@@ -1,8 +1,12 @@
+from typing import Optional
+
 from fastapi import APIRouter
-# from fastapi_cache.decorator import cache
 
 from app.main_content.dao import MainContentDAO
 from app.main_content.schemas import SMainContent
+
+# from fastapi_cache.decorator import cache
+
 
 router = APIRouter(
     prefix="/main_content",
@@ -12,7 +16,7 @@ router = APIRouter(
 
 
 @router.get("/")
-async def get_content() -> SMainContent | None:
+async def get_content() -> Optional[SMainContent]:
     """
     Get all products
 
@@ -20,5 +24,7 @@ async def get_content() -> SMainContent | None:
         list[Products]: list of products
     """
     content = await MainContentDAO.get_all()
+    if content:
+        content.images = content.images[0].split("/")[-1]
 
     return content

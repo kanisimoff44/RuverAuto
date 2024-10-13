@@ -1,4 +1,4 @@
-"""change upload image of the product
+"""change the upload of the product image
 
 Revision ID: d66d8da7dfc1
 Revises: 1b2e2156ed2c

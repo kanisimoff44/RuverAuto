@@ -1,4 +1,5 @@
-from typing import Optional, Annotated
+from typing import Annotated, Optional
+
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database import Base

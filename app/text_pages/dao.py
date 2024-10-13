@@ -1,8 +1,8 @@
+from sqlalchemy import select
+
 from app.dao.base import BaseDAO
 from app.database import async_session_maker
 from app.text_pages.models import TextPages
-
-from sqlalchemy import select
 
 
 class TextPagesDAO(BaseDAO):

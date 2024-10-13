@@ -1,12 +1,11 @@
-from typing import Optional, Annotated, List
-from sqlalchemy import JSON, ForeignKey, Date
-from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import date
-from fastapi_storages import FileSystemStorage
-from fastapi_storages.integrations.sqlalchemy import FileType as _FileType
-from typing import Any
+from typing import Annotated, Optional
+
+from sqlalchemy import Date, ForeignKey
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
+from app.utils import FileType, ImageType
 
 intpk = Annotated[int, mapped_column(primary_key=True)]
 
@@ -35,11 +34,6 @@ class Products(Base):
         return f"Товар: {self.name}"
 
 
-class ImageType(_FileType):
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(storage=FileSystemStorage(path='app/static/images'), *args, **kwargs)
-
-
 class ProductsImages(Base):
     __tablename__ = "products_images"
 
@@ -65,11 +59,6 @@ class ProductsInfo(Base):
 
     def __str__(self):
         return f"{self.name_of_characteristic}: {self.value_of_characteristic}"
-
-
-class FileType(_FileType):
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(storage=FileSystemStorage(path='app/files'), *args, **kwargs)
 
 
 class PriceList(Base):

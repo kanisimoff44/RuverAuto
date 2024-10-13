@@ -10,22 +10,18 @@ class Settings(BaseSettings):
     DB_PASSWORD: str
     DB_NAME: str
 
-
     @property
     def DATABASE_URL(self) -> str:
         return f"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
-
 
     REDIS_HOST: str
     REDIS_PORT: int
     REDIS_PASSWD: str    
 
-
     @property
     def REDIS_URL(self) -> str:
         # return f"redis://:{self.REDIS_PASSWD}@{self.REDIS_HOST}:{self.REDIS_PORT}"
         return f"redis://{self.REDIS_HOST}:{self.REDIS_PORT}"
-
 
     SECRET_KEY: str
     ALGORITHM: str
@@ -33,5 +29,6 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=".env",
     )
+
 
 settings = Settings()

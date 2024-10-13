@@ -1,8 +1,10 @@
 from fastapi import APIRouter
-# from fastapi_cache.decorator import cache
 
 from app.text_pages.dao import TextPagesDAO
 from app.text_pages.schemas import STextPages
+
+# from fastapi_cache.decorator import cache
+
 
 router = APIRouter(
     prefix="/text_pages",

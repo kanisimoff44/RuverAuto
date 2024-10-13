@@ -1,33 +1,36 @@
-from contextlib import asynccontextmanager
+import logging
 import time
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, Request
+from fastapi.staticfiles import StaticFiles
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
-from fastapi.staticfiles import StaticFiles
 from redis import asyncio as aioredis
 from sqladmin import Admin
 
-from app.database import engine
 from app.admin.auth import authentication_backend
 from app.admin.views import (
+    AboutUsAdmin,
+    MainContentAdmin,
+    NewsAdmin,
+    NewsImagesAdmin,
+    PriceListAdmin,
     ProductsAdmin,
     ProductsImagesAdmin,
     ProductsInfoAdmin,
-    MainContentAdmin,
     TextPagesAdmin,
     UsersAdmin,
-    NewsAdmin,
-    PriceListAdmin
 )
 from app.config import settings
+from app.database import engine
 from app.logger import logger
-from app.load_images.router import router as images_router
 from app.main_content.router import router as content_router
+from app.news.router import router as news_router
 from app.pages.router import router as pages_router
 from app.products.router import router as products_router
-from app.users.router import router as users_router
-from app.news.router import router as news_router
 from app.text_pages.router import router as text_pages_router
+from app.users.router import router as users_router
 
 
 @asynccontextmanager
@@ -54,7 +57,6 @@ app.include_router(news_router)
 app.include_router(content_router)
 app.include_router(text_pages_router)
 app.include_router(pages_router)
-app.include_router(images_router)
 app.include_router(users_router)
 
 admin = Admin(
@@ -63,13 +65,18 @@ admin = Admin(
     authentication_backend=authentication_backend,
 )
 admin.add_view(MainContentAdmin)
+admin.add_view(AboutUsAdmin)
 admin.add_view(ProductsAdmin)
 admin.add_view(ProductsInfoAdmin)
-admin.add_view(UsersAdmin)
-admin.add_view(NewsAdmin)
-admin.add_view(PriceListAdmin)
-admin.add_view(TextPagesAdmin)
 admin.add_view(ProductsImagesAdmin)
+admin.add_view(PriceListAdmin)
+admin.add_view(NewsAdmin)
+admin.add_view(NewsImagesAdmin)
+admin.add_view(TextPagesAdmin)
+admin.add_view(UsersAdmin)
+
+logging.basicConfig()
+logging.getLogger("sqlalchemy.engine").setLevel(logging.DEBUG)
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 

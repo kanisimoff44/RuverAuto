@@ -39,7 +39,6 @@ async def get_news_by_id(news_id: int) -> SNewsDetail:
         SNewsDetail: _description_
     """
     news = await NewsDAO.get_by_id(news_id)
-    check_news_img(news)
     news.date_of_the_news = news.date_of_the_news.strftime("%d.%m.%Y")
 
     return news

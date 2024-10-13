@@ -1,11 +1,12 @@
 from fastapi import APIRouter
-from fastapi.responses import FileResponse
-# from fastapi_cache.decorator import cache
+from fastapi.responses import FileResponse, RedirectResponse
 
-from app.products.dao import ProductsDAO, PriceListDAO
+from app.products.dao import PriceListDAO, ProductsDAO
 from app.products.schemas import SProductsAll, SProductsDetail
 from app.utils import check_product_img
-from fastapi.responses import RedirectResponse
+
+# from fastapi_cache.decorator import cache
+
 
 router = APIRouter(
     prefix="/products",
@@ -42,9 +43,6 @@ async def get_product_by_id(product_id: int) -> SProductsDetail:
         SProductDetail: _description_
     """
     product = await ProductsDAO.get_by_id(product_id)
-    print(product)
-    # check_product_img(product)
-
     return product
 
 

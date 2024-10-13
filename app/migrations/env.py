@@ -11,12 +11,15 @@ sys.path.insert(0, dirname(dirname(dirname(abspath(__file__)))))
 
 from app.config import settings
 from app.database import Base
-from app.products.models import Products
-from app.products.models import ProductsInfo
-from app.products.models import PriceList
-from app.main_content.models import MainContent
+from app.products.models import (
+    Products,
+    ProductsInfo,
+    ProductsImages,
+    PriceList
+)
+from app.main_content.models import MainContent, AboutUsImages
 from app.users.models import Users
-from app.news.models import News
+from app.news.models import News, NewsImages
 from app.text_pages.models import TextPages
 
 # this is the Alembic Config object, which provides

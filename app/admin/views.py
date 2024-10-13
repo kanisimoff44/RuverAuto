@@ -1,35 +1,31 @@
 from typing import Any
+
 from fastapi import Request
 from sqladmin import ModelView
-from starlette.datastructures import UploadFile
-from wtforms import TextAreaField, MultipleFileField
-import aiofiles
+from wtforms import TextAreaField
 
-from app.products.models import Products, ProductsInfo, PriceList, ProductsImages
-from app.main_content.models import MainContent
-from app.news.models import News
-from app.users.models import Users
-from app.text_pages.models import TextPages
 from app.admin.columns import (
+    column_labels_for_main_content,
+    column_labels_for_news,
+    column_labels_for_news_images,
+    column_labels_for_price_list,
+    column_labels_for_producst_images,
     column_labels_for_products,
     column_labels_for_products_info,
-    form_columns_for_products,
-    form_columsn_for_products_info,
-    column_labels_for_main_content,
-    form_column_for_main_content,
-    column_labels_for_users,
-    form_column_for_users,
-    column_labels_for_news,
-    form_column_for_news,
-    column_labels_for_price_list,
-    form_column_for_price_list,
     column_labels_for_text_pages,
-    form_column_for_text_pages,
-    column_labels_for_producst_images,
-    form_column_for_producst_images
+    column_labels_for_users,
+    form_column_for_main_content,
+    form_column_for_news,
+    form_column_for_price_list,
+    form_column_for_users,
+    form_columns_for_products,
 )
+from app.main_content.models import AboutUsImages, MainContent
+from app.news.models import News, NewsImages
+from app.products.models import PriceList, Products, ProductsImages, ProductsInfo
+from app.text_pages.models import TextPages
 from app.users.auth import get_password_hash
-from werkzeug.utils import secure_filename
+from app.users.models import Users
 
 
 class ProductsAdmin(ModelView, model=Products):
@@ -63,7 +59,6 @@ class ProductsImagesAdmin(ModelView, model=ProductsImages):
     icon = "fa-solid fa-image"
 
     column_labels = column_labels_for_producst_images
-    form_columns = form_column_for_producst_images
 
 
 class ProductsInfoAdmin(ModelView, model=ProductsInfo):
@@ -73,7 +68,6 @@ class ProductsInfoAdmin(ModelView, model=ProductsInfo):
     icon = "fa-solid fa-star"
 
     column_labels = column_labels_for_products_info
-    form_columns = form_columsn_for_products_info
 
 
 class PriceListAdmin(ModelView, model=PriceList):
@@ -87,7 +81,7 @@ class PriceListAdmin(ModelView, model=PriceList):
 
 
 class MainContentAdmin(ModelView, model=MainContent):
-    column_list = [c.name for c in MainContent.__table__.c]
+    column_list = [c.name for c in MainContent.__table__.c] + [MainContent.images]
     name = "Поле сайта"
     name_plural = "Настройка сайта"
     icon = "fa-solid fa-brush"
@@ -95,6 +89,15 @@ class MainContentAdmin(ModelView, model=MainContent):
 
     column_labels = column_labels_for_main_content
     form_columns = form_column_for_main_content
+
+
+class AboutUsAdmin(ModelView, model=AboutUsImages):
+    column_list = [c.name for c in AboutUsImages.__table__.c] + [AboutUsImages.about_us]
+    name = "Изображения 'О нас'"
+    name_plural = "Изображение 'О нас'"
+    icon = "fa-solid fa-image"
+
+    # column_labels = column_labels_for_news_images
 
 
 class TextPagesAdmin(ModelView, model=TextPages):
@@ -105,7 +108,6 @@ class TextPagesAdmin(ModelView, model=TextPages):
     can_delete = False
     
     column_labels = column_labels_for_text_pages
-    form_columns = form_column_for_text_pages
     
     form_overrides = {
         "our_contacts": TextAreaField,
@@ -116,7 +118,7 @@ class TextPagesAdmin(ModelView, model=TextPages):
 
 
 class UsersAdmin(ModelView, model=Users):
-    column_list = [Users.email, Users.is_active, Users.is_superuser, Users.role]
+    column_list = [Users.username, Users.is_active, Users.is_superuser, Users.role]
     name = "Пользователь"
     name_plural = "Пользователи"
     icon = "fa-solid fa-user"
@@ -135,7 +137,7 @@ class NewsAdmin(ModelView, model=News):
         News.id,
         News.title,
         News.date_of_the_news,
-        News.news_image_name,
+        News.images,
         News.is_active,
         News.description
     ]
@@ -150,3 +152,12 @@ class NewsAdmin(ModelView, model=News):
     form_overrides = {
         "description": TextAreaField
     }
+
+
+class NewsImagesAdmin(ModelView, model=NewsImages):
+    column_list = [c.name for c in NewsImages.__table__.c] + [NewsImages.the_news]
+    name = "Изображения новостей"
+    name_plural = "Изображение новости"
+    icon = "fa-solid fa-image"
+
+    column_labels = column_labels_for_news_images

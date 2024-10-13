@@ -1,13 +1,12 @@
-from fastapi import APIRouter, Request, Depends
+from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-from app.products.dao import PriceListDAO
-from app.products.router import get_all_products, get_product_by_id, get_price_list
 from app.main_content.router import get_content
 from app.news.router import get_all_news, get_news_by_id
+from app.products.dao import PriceListDAO
+from app.products.router import get_all_products, get_price_list, get_product_by_id
 from app.text_pages.router import get_text_page
-
 
 router = APIRouter(
     prefix="/pages",

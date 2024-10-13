@@ -61,8 +61,8 @@
 
 <!-- Раздел №2 -->
 <div class="main__about-us-container">
-  {% if content.about_us_image %}
-    <img src="{{ url_for('static', path='images/' + content.about_us_image|string) }}" alt="О компании" class="about-us-img">
+  {% if content.images %}
+    <img src="{{ url_for('static', path='images/' + content.images|string)}}" alt="О компании" class="about-us-img">
   {% endif %}
   <div class="main__about-us-text">
     {% if content.about_us_title %}
@@ -86,8 +86,8 @@
     {% for news in all_news[:3] %}
       {% if news.is_active is true %}
         <div class="news-item">
-          {% if news.news_image_name %}
-            <img src="{{ url_for('static', path='images/' + news.news_image_name|string)}}" alt="Фото продукта" class="image">
+          {% if news.images %}
+            <img src="{{ url_for('static', path='images/' + news.images[0]|string)}}" alt="Фото продукта" class="image">
           {% else %}
             <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Фото продукта" class="image">
           {% endif %}

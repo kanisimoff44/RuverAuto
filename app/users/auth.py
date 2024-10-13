@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, UTC
+from datetime import UTC, datetime, timedelta
 
 from jose import jwt
 from passlib.context import CryptContext
@@ -29,8 +29,8 @@ def create_access_token(data: dict) -> str:
     return encoded_jwt
 
 
-async def authenticate_user(email: EmailStr, password: str):
-    user = await UserDAO.find_one_or_none(email=email)
+async def authenticate_user(username: EmailStr, password: str):
+    user = await UserDAO.find_one_or_none(username=username)
     if not (user and verify_password(password, user.hashed_password)):
         raise IncorrectEmailOrPasswordException
     return user

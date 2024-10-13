@@ -1,7 +1,8 @@
-from sqlalchemy import Enum
-from typing import Annotated
-from sqlalchemy.orm import mapped_column, Mapped
 from enum import Enum as PyEnum
+from typing import Annotated
+
+from sqlalchemy import Enum
+from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database import Base
 
@@ -18,11 +19,11 @@ class Users(Base):
     __tablename__ = "users"
 
     id: Mapped[intpk]
-    email: Mapped[str]
+    username: Mapped[str]
     hashed_password: Mapped[str]
     is_active: Mapped[bool] = mapped_column(default=True)
     is_superuser: Mapped[bool] = mapped_column(default=False)
     role: Mapped[Roles] = mapped_column(Enum(Roles), default=Roles.USER)
 
     def __str__(self):
-        return f"Пользователь {self.email}"
+        return f"Пользователь {self.username}"
