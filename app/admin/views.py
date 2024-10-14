@@ -5,6 +5,7 @@ from sqladmin import ModelView
 from wtforms import TextAreaField
 
 from app.admin.columns import (
+    column_labels_for_about_us_images,
     column_labels_for_main_content,
     column_labels_for_news,
     column_labels_for_news_images,
@@ -97,7 +98,7 @@ class AboutUsAdmin(ModelView, model=AboutUsImages):
     name_plural = "Изображение 'О нас'"
     icon = "fa-solid fa-image"
 
-    # column_labels = column_labels_for_news_images
+    column_labels = column_labels_for_about_us_images
 
 
 class TextPagesAdmin(ModelView, model=TextPages):

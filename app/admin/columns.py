@@ -130,6 +130,13 @@ form_column_for_main_content = {
     },
 }
 
+column_labels_for_about_us_images = {
+    "id": "Идентификатор",
+    "about_us_id": "Идентификатор записи",
+    "image_name": "Название",
+    "about_us": "Запись"
+}
+
 column_labels_for_users = {
     "username": "Логин",
     "hashed_password": "Пароль",

@@ -75,8 +75,8 @@ admin.add_view(NewsImagesAdmin)
 admin.add_view(TextPagesAdmin)
 admin.add_view(UsersAdmin)
 
-logging.basicConfig()
-logging.getLogger("sqlalchemy.engine").setLevel(logging.DEBUG)
+# logging.basicConfig()
+# logging.getLogger("sqlalchemy.engine").setLevel(logging.DEBUG)
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 

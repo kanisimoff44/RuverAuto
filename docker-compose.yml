@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: "Dockerfile.nginx"
+    container_name: ruverauto_nginx
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - ruverauto
+
+  db:
+    image: postgres:15
+    container_name: ruverauto_db
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+    env_file:
+      - .env
+    ports:
+      - 2345:5432
+
+  ruverauto:
+    image: ruverauto
+    build:
+      context: .
+    container_name: ruverauto
+    env_file:
+      - .env
+    depends_on:
+      - db
+    command: ["/ruverauto/docker/app.sh"]
+    # ports:
+      # - 8080:8000
+
+volumes:
+  postgresdata:
