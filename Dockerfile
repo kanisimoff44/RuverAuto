@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-RUN chmod a+x /ruverauto/docke/*.sh
+RUN chmod a+x /ruverauto/docker/*.sh
