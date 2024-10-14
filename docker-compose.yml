@@ -17,7 +17,7 @@ services:
     volumes:
       - postgresdata:/var/lib/postgresql/data
     env_file:
-      - .env
+      - .env-non-dev
     ports:
       - 2345:5432
 
@@ -27,7 +27,7 @@ services:
       context: .
     container_name: ruverauto
     env_file:
-      - .env
+      - .env-non-dev
     depends_on:
       - db
     command: ["/ruverauto/docker/app.sh"]
