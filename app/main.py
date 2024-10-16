@@ -2,6 +2,8 @@ import logging
 import time
 from contextlib import asynccontextmanager
 
+from fastapi.middleware.cors import CORSMiddleware
+
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi_cache import FastAPICache
@@ -50,6 +52,25 @@ app = FastAPI(
     title="Рувер-Авто",
     root_path="/api",
     lifespan=lifespan
+)
+
+origins = [
+    "http://localhost:8000",
+    "https://localhost:8000",
+    "http://ruverauto.ru",
+    "https://ruverauto.ru",
+    "http://217.12.40.130",
+    "https://217.12.40.130",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "OPTIONS", "DELETE", "PATCH", "PUT"],
+    allow_headers=["Content-Type", "Set-Cookie", "Access-Control-Allow-Headers", 
+                   "Access-Control-Allow-Origin",
+                   "Authorization"],
 )
 
 app.include_router(products_router)
