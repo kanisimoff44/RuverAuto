@@ -24,6 +24,7 @@ class MainContentDAO(BaseDAO):
             for content in main_content:
                 main_content_list.append(
                     SMainContent(
+                        id=content.id,
                         logo=content.logo,
                         phone=content.phone,
                         email=content.email,
