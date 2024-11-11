@@ -183,6 +183,7 @@ body::-webkit-scrollbar {
   line-height: 1.2;
   color: #fff;
   text-align: center;
+  white-space: pre-line;
 }
 
 .main__content-container,
@@ -439,7 +440,7 @@ body::-webkit-scrollbar {
 }
 
 .main__about-us-container .main__about-us-text .description {
-  font-family: "Roboto Slab", serif;
+  font-family: serif;
   font-size: 18px;
   line-height: 1.2;
   color: #333;
