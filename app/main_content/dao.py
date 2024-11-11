@@ -24,6 +24,7 @@ class MainContentDAO(BaseDAO):
             for content in main_content:
                 main_content_list.append(
                     SMainContent(
+                        id=content.id,
                         logo=content.logo,
                         phone=content.phone,
                         email=content.email,
@@ -38,7 +39,6 @@ class MainContentDAO(BaseDAO):
                         brands_title=content.brands_title,
                         address=content.address,
                         link_to_the_map=content.link_to_the_map,
-                        footer=content.footer,
                     )
                 )
 

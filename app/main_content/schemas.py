@@ -19,6 +19,5 @@ class SMainContent(BaseModel):
     brands_title: Optional[str]
     address: Optional[str]
     link_to_the_map: Optional[str]
-    footer: Optional[str]
 
     model_config = ConfigDict(from_attributes=True)
