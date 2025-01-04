@@ -4,7 +4,7 @@ column_labels_for_products = {
     "description": "Описание",
     "images": "Фото",
     "price": "Цена",
-    "label": "Лейбл",
+    "label": "Лейбл наличия",
     "is_active": "Публикация",
     "characteristics": "Характеристики"
 }
@@ -20,7 +20,7 @@ form_columns_for_products = {
         "label": "Цена"
     },
     "label": {
-        "label": "Лейбл"
+        "label": "Лейбл наличия"
     },
     "characteristics": {
         "label": "Характеристики"
@@ -44,8 +44,24 @@ column_labels_for_products_info = {
 column_labels_for_producst_images = {
     "id": "Идентификатор",
     "product_id": "Идентификатор товара",
+    "product": "Товар",
     "image_name": "Название изображения",
-    "product": "Товар"
+}
+
+form_columns_for_producst_images = {
+    "id": {
+        "label": "Идентификатор"
+    },
+    "product_id": {
+        "label": "Идентификатор товара"
+    },
+    "product": {
+        "label": "Товар"
+    },
+    "image_name": {
+        "label": "Название изображения",
+        "clearable": False
+    },
 }
 
 column_labels_for_price_list = {
@@ -70,16 +86,14 @@ column_labels_for_main_content = {
     "email": "Почта",
     "header_title": "Заголовок в шапке",
     "header_desc": "Описание в шапке",
-    "main_desc": "Описание страницы",
-    "products_title": "Заголовок раздела #1",
-    "about_us_title": "Заголовок раздела #2",
-    "images": "Изображение раздела #2",
-    "about_us_desc": "Описание раздела #2",
-    "news_title": "Заголовок раздела #3",
-    "brands_title": "Заголовок раздела #4",
+    "main_desc": "Информационная строка",
+    "products_title": "Заголовок блока товаров",
+    "about_us_title": "Заголовок блока «О нас",
+    "about_us_desc": "Описание блока «О нас»",
+    "news_title": "Заголовок блока новостей",
+    "brands_title": "Заголовок блока брендов",
     "address": "Адрес",
     "link_to_the_map": "Ссылка в Яндекс.Карты",
-    "footer": "Подвал",
 }
 
 form_column_for_main_content = {
@@ -99,34 +113,25 @@ form_column_for_main_content = {
         "label": "Описание в шапке"
     },
     "main_desc": {
-        "label": "Описание страницы"
+        "label": "Информационная строка"
     },
     "products_title": {
-        "label": "Заголовок раздела #1"
+        "label": "Заголовок раздела «Товары»"
     },
     "about_us_title": {
-        "label": "Заголовок раздела #2"
-    },
-    "images": {
-        "label": "Изображение раздела #2"
+        "label": "Заголовок раздела «О компании»"
     },
     "about_us_desc": {
-        "label": "Описание раздела #2"
+        "label": "Описание раздела «О компании»"
     },
     "news_title": {
-        "label": "Заголовок раздела #3"
-    },
-    "brands_title": {
-        "label": "Заголовок раздела #4"
+        "label": "Заголовок раздела «Новости»"
     },
     "address": {
         "label": "Адрес"
     },
     "link_to_the_map": {
         "label": "Ссылка на Яндекс.Карты"
-    },
-    "footer": {
-        "label": "Подвал"
     },
 }
 
