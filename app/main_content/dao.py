@@ -39,7 +39,6 @@ class MainContentDAO(BaseDAO):
                         brands_title=content.brands_title,
                         address=content.address,
                         link_to_the_map=content.link_to_the_map,
-                        footer=content.footer,
                     )
                 )
 

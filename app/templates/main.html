@@ -8,7 +8,7 @@
   {% endif %}
 </div>
 
-<!-- Раздел №1 -->
+<!-- Раздел Товаров -->
 <div class="main__content-container">
   <div class="content-container-title-products">
     {% if content.products_title %}
@@ -59,7 +59,7 @@
   </div>
 </div>
 
-<!-- Раздел №2 -->
+<!-- Раздел "О компании" -->
 <div class="main__about-us-container">
   {% if content.images %}
     <img src="{{ url_for('static', path='images/' + content.images|string)}}" alt="О компании" class="about-us-img">
@@ -74,7 +74,7 @@
   </div>
 </div>
 
-<!-- Раздел №3 -->
+<!-- Раздел Новостей -->
 <div class="main__news-container">
   <div class="news-container-title">
     {% if content.news_title %}

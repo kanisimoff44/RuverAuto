@@ -84,6 +84,8 @@ admin = Admin(
     app,
     engine,
     authentication_backend=authentication_backend,
+    title="Рувер-Авто",
+    templates_dir="app/templates",
 )
 admin.add_view(MainContentAdmin)
 admin.add_view(AboutUsAdmin)
@@ -100,6 +102,8 @@ admin.add_view(UsersAdmin)
 # logging.getLogger("sqlalchemy.engine").setLevel(logging.DEBUG)
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
+app.mount("/static/sqladmin/static", StaticFiles(directory="app/static"), name="admin_static")
+
 
 @app.middleware("http")
 async def add_process_time_header(request: Request, call_next):

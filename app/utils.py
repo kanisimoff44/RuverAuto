@@ -1,7 +1,7 @@
 from typing import Any
 
 from fastapi_storages import FileSystemStorage
-from fastapi_storages.integrations.sqlalchemy import FileType
+from fastapi_storages.integrations.sqlalchemy import FileType, ImageType
 
 from app.news.schemas import SNewsDetail
 from app.products.schemas import SProductsDetail
@@ -29,7 +29,7 @@ def check_news_img(news: SNewsDetail) -> str:
     return news.images
 
 
-class ImageType(FileType):
+class ImageType(ImageType):
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(storage=FileSystemStorage(path='app/static/images'), *args, **kwargs)
 

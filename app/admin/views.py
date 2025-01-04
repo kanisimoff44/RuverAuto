@@ -2,7 +2,7 @@ from typing import Any
 
 from fastapi import Request
 from sqladmin import ModelView
-from wtforms import TextAreaField
+from wtforms import TextAreaField, FileField
 
 from app.admin.columns import (
     column_labels_for_about_us_images,
@@ -20,6 +20,7 @@ from app.admin.columns import (
     form_column_for_price_list,
     form_column_for_users,
     form_columns_for_products,
+    form_columns_for_producst_images
 )
 from app.main_content.models import AboutUsImages, MainContent
 from app.news.models import News, NewsImages
@@ -41,7 +42,7 @@ class ProductsAdmin(ModelView, model=Products):
         Products.description
     ]
 
-    name = "Товар"
+    name = "товар"
     name_plural = "Товары"
     icon = "fa-solid fa-car"
 
@@ -51,20 +52,25 @@ class ProductsAdmin(ModelView, model=Products):
     form_overrides = {
         "description": TextAreaField,
     }
-    
+
 
 class ProductsImagesAdmin(ModelView, model=ProductsImages):
     column_list = [c.name for c in ProductsImages.__table__.c] + [ProductsImages.product]
-    name = "Изображения товаров"
-    name_plural = "Изображение товара"
+    name = "изображение товара"
+    name_plural = "Изображения товаров"
     icon = "fa-solid fa-image"
 
     column_labels = column_labels_for_producst_images
+    form_columns = form_columns_for_producst_images
+
+    form_overrides = {
+        "image_name": FileField,
+    }
 
 
 class ProductsInfoAdmin(ModelView, model=ProductsInfo):
     column_list = [c.name for c in ProductsInfo.__table__.c] + [ProductsInfo.product]
-    name = "Характеристика товара"
+    name = "характеристику товара"
     name_plural = "Характеристики товаров"
     icon = "fa-solid fa-star"
 
@@ -73,9 +79,13 @@ class ProductsInfoAdmin(ModelView, model=ProductsInfo):
 
 class PriceListAdmin(ModelView, model=PriceList):
     column_list = [c.name for c in PriceList.__table__.c]
-    name = "Прайс-лист"
+    name = "прайс-лист"
     name_plural = "Прайс-листы"
     icon = "fa-solid fa-money-bill-1-wave"
+    
+    form_overrides = {
+        "file_name": FileField,
+    }
 
     column_labels = column_labels_for_price_list
     form_columns = form_column_for_price_list
@@ -83,19 +93,23 @@ class PriceListAdmin(ModelView, model=PriceList):
 
 class MainContentAdmin(ModelView, model=MainContent):
     column_list = [c.name for c in MainContent.__table__.c] + [MainContent.images]
-    name = "Поле сайта"
+    name = "новую настройку"
     name_plural = "Настройка сайта"
     icon = "fa-solid fa-brush"
     can_delete = False
 
     column_labels = column_labels_for_main_content
     form_columns = form_column_for_main_content
+    
+    form_overrides = {
+        "main_desc": TextAreaField
+    }
 
 
 class AboutUsAdmin(ModelView, model=AboutUsImages):
     column_list = [c.name for c in AboutUsImages.__table__.c] + [AboutUsImages.about_us]
-    name = "Изображения 'О нас'"
-    name_plural = "Изображение 'О нас'"
+    name = "изображение «О нас»"
+    name_plural = "Изображения «О нас»"
     icon = "fa-solid fa-image"
 
     column_labels = column_labels_for_about_us_images
@@ -103,7 +117,7 @@ class AboutUsAdmin(ModelView, model=AboutUsImages):
 
 class TextPagesAdmin(ModelView, model=TextPages):
     column_list = [c.name for c in TextPages.__table__.c]
-    name = "Текстовая страница"
+    name = "текстовую страница"
     name_plural = "Текстовые страницы"
     icon = "fa-solid fa-file-lines"
     can_delete = False
@@ -120,7 +134,7 @@ class TextPagesAdmin(ModelView, model=TextPages):
 
 class UsersAdmin(ModelView, model=Users):
     column_list = [Users.username, Users.is_active, Users.is_superuser, Users.role]
-    name = "Пользователь"
+    name = "пользователя"
     name_plural = "Пользователи"
     icon = "fa-solid fa-user"
     can_delete = False
@@ -142,7 +156,7 @@ class NewsAdmin(ModelView, model=News):
         News.is_active,
         News.description
     ]
-    name = "Новость"
+    name = "новость"
     name_plural = "Новости"
     icon = "fa-solid fa-newspaper"
     can_delete = True
@@ -157,8 +171,8 @@ class NewsAdmin(ModelView, model=News):
 
 class NewsImagesAdmin(ModelView, model=NewsImages):
     column_list = [c.name for c in NewsImages.__table__.c] + [NewsImages.the_news]
-    name = "Изображения новостей"
-    name_plural = "Изображение новости"
+    name = "изображение новости"
+    name_plural = "Изображения новостей"
     icon = "fa-solid fa-image"
 
     column_labels = column_labels_for_news_images

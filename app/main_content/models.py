@@ -26,7 +26,6 @@ class MainContent(Base):
     brands_title: Mapped[Optional[str]]
     address: Mapped[Optional[str]]
     link_to_the_map: Mapped[Optional[str]]
-    footer: Mapped[Optional[str]]
 
     images: Mapped[list["AboutUsImages"]] = relationship(
         back_populates="about_us",
