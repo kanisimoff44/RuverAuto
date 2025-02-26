@@ -57,7 +57,7 @@ async def get_all_product(
             "products": products,
             "all_news": all_news,
             "content": content,
-            "price_list": price_list[-1],  # get last price-list if more than one
+            "price_list": price_list[-1] if price_list else None,  # get last price-list if more than one
             "page": page
         },
     )

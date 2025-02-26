@@ -51,12 +51,13 @@ async def get_price_list():
     price_list = await PriceListDAO.get_price_list()
 
     file_path = price_list[-1].file_name
+    filename = price_list[-1].file_name.split("/")[-1]
 
     if not file_path:
         return RedirectResponse("/pages/products")
 
     return FileResponse(
         path=file_path,
-        filename="price_list.xlsx",
-        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        filename=f"price_list.{filename.split('.')[-1]}",
+        media_type="application/octet-stream"
     )
