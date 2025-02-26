@@ -228,8 +228,7 @@ body::-webkit-scrollbar {
   text-align: left;
 }
 
-.footer__top .footer__nav-menu-first,
-.footer__top .footer__nav-menu-second {
+.footer__top .footer__nav-menu {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -241,30 +240,21 @@ body::-webkit-scrollbar {
 }
 
 .footer__top
-.footer__nav-menu-first
-.footer__nav-menu-items,
-.footer__nav-menu-second
+.footer__nav-menu
 .footer__nav-menu-items {
   margin: auto;
   padding: auto;
 }
 
 .footer__top
-.footer__nav-menu-first
-.footer__nav-menu-items
-.footer__nav-link,
-.footer__nav-menu-second
+.footer__nav-menu
 .footer__nav-menu-items
 .footer__nav-link {
   margin: 0 25px;
 }
 
 .footer__top
-.footer__nav-menu-first
-.footer__nav-menu-items
-.footer__nav-link
-.nav-link,
-.footer__nav-menu-second
+.footer__nav-menu
 .footer__nav-menu-items
 .footer__nav-link
 .nav-link {
@@ -275,11 +265,7 @@ body::-webkit-scrollbar {
 }
 
 .footer__top
-.footer__nav-menu-first
-.footer__nav-menu-items
-.footer__nav-link
-.nav-link:hover,
-.footer__nav-menu-second
+.footer__nav-menu
 .footer__nav-menu-items
 .footer__nav-link
 .nav-link:hover {
