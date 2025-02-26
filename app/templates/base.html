@@ -4,7 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Рувер-Авто</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/products.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/news.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/detail.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/product_detail.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/news_detail.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/text_pages.css') }}">
     <link rel="icon" href="{{ url_for('static', path='images/black.png') }}">
     <!-- Google Fonts -->
     <link
@@ -111,7 +118,7 @@
         </div>
 
         <!-- Меню -->
-        <div class="footer__nav-menu">
+        <div class="footer__nav-menu-first">
           <ul class="footer__nav-menu-items">
             {% if products %}
               <li class="footer__nav-link"><a href="/pages/products" class="nav-link" class:name={condition}>Товары</a></li>
@@ -119,6 +126,11 @@
             {% if all_news %}
               <li class="footer__nav-link"><a href="/pages/news" class="nav-link">Новости</a></li>
             {% endif %}
+          </ul>
+        </div>
+
+        <div class="footer__nav-menu-second">
+          <ul class="footer__nav-menu-items">
             {% if page.delivery_and_payment %}
               <li class="footer__nav-link"><a href="/pages/delivery-and-payment" class="nav-link">Доставка и оплата</a></li>
             {% endif %}
@@ -168,7 +180,7 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <p class="copyright">&copy; 2024 ООО «Рувер-авто»</p>
+        <p class="copyright">&copy; 2025 ООО «Рувер-авто»</p>
         {% if page.privacy_policy %}
           <p><a href="/pages/privacy-policy" class="privacy-policy">Политика конфиденциальности</a></p>
         {% endif %}

@@ -25,9 +25,9 @@ class NewsDAO(BaseDAO):
                 short_description = ""
                 if news.description:
                         short_description = (
-                            news.description[:50] + '...' 
-                            if len(news.description) > 50 
-                            else news.description[:50]
+                            news.description[:100] + '...'
+                            if len(news.description) > 100
+                            else news.description[:100]
                         )
                 news_list.append(
                     SNewsAll(
