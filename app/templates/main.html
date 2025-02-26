@@ -29,11 +29,7 @@
               {% elif product.label is false %}
                 <div class="label-false">Под заказ</div>
               {% endif %}
-              {% if product.images[-1] %}
-                <img src="{{ url_for('static', path='images/' + product.images[-1]|string)}}" alt="Фото товара" class="image">
-              {% else %}
-                <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Фото товара" class="image">
-              {% endif %}
+              <img src="{{ url_for('static', path='images/' + product.images[0]|string)}}" alt="Фото товара" class="image">
             {% else %}
               <img src="{{ url_for('static', path='images/coming_soon.webp')}}" alt="Фото товара" class="image">
             {% endif %}
