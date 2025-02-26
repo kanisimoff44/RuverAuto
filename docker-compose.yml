@@ -36,7 +36,7 @@ services:
       context: .
     container_name: ruverauto
     volumes:
-      - /home/RuverAuto/app/static/images:/ruverauto/app/static/images
+      - static_volume:/ruverauto/app/static/images
     env_file:
       - .env-non-dev
     depends_on:
@@ -49,3 +49,4 @@ services:
 
 volumes:
   postgresdata:
+  static_volume:
