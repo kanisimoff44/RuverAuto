@@ -70,7 +70,7 @@
               {% if content.phone %}
                 <img src="{{ url_for('static', path='images/phone.png') }}" alt="phone-icon" class="phone-icon">
                 <div class="info-phone">
-                  <h1 class="phone">{{ content.phone }}</h1>
+                  <a href="tel: {{ content.phone }}" class="phone">{{ content.phone }}</a>
                   <p class="phone-desc">Звонок по России бесплатный</p>
                 </div>
               {% endif %}
@@ -80,7 +80,7 @@
             <li class="header__info-email">
               {% if content.email %}
                 <img src="{{ url_for('static', path='images/email.png')}}" alt="email-icon" class="email-icon">
-                <h2 class="email">{{ content.email }}</h2>
+                <a href="mailto: {{ content.email }}" class="email">{{ content.email }}</a>
               {% endif %}
             </li>
           </ul>
@@ -143,7 +143,7 @@
               {% if content.phone %}
                 <img src="{{ url_for('static', path='images/phone.png') }}" alt="phone-icon" class="phone-icon">
                 <div class="info-phone">
-                  <h1 class="phone">{{ content.phone }}</h1>
+                  <a href="tel: {{ content.phone }}" class="phone">{{ content.phone }}</a>
                   <p class="phone-desc">Звонок по России бесплатный</p>
                 </div>
               {% endif %}
@@ -153,7 +153,7 @@
             <li class="footer__info-email">
               {% if content.email %}
                 <img src="{{ url_for('static', path='images/email.png')}}" alt="email-icon" class="email-icon">
-                <h1 class="email">{{ content.email }}</h1>
+                <a href="mailto: {{ content.email }}" class="email">{{ content.email }}</a>
               {% endif %}
             </li>
 
