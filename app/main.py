@@ -10,6 +10,7 @@ from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
 from redis import asyncio as aioredis
 from sqladmin import Admin
+from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 
 from app.admin.auth import authentication_backend
 from app.admin.views import (
@@ -62,6 +63,11 @@ origins = [
     "http://217.12.40.130",
     "https://217.12.40.130",
 ]
+
+app.add_middleware(
+    ProxyHeadersMiddleware,
+    trusted_hosts="*",
+)
 
 app.add_middleware(
     CORSMiddleware,
