@@ -26,7 +26,7 @@ services:
     ports:
       - 2345:5432
     networks:
-      - dev
+      - prod
 
   ruverauto:
     image: ruverauto
@@ -48,7 +48,6 @@ services:
 volumes:
   postgresdata:
   static_volume:
-  static:
 
 networks:
   prod:
