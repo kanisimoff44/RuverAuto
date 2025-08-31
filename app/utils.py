@@ -13,7 +13,7 @@ def check_product_img(product: SProductsDetail) -> str:
         product.images = None
     else:
         for image in product.images:
-            names_images.append(image.split("/")[-1])
+            names_images.append(image.split("/")[-1] if image else None)
     product.images = names_images
     return product.images
 
@@ -24,7 +24,7 @@ def check_news_img(news: SNewsDetail) -> str:
         news.images = None
     else:
         for image in news.images:
-            names_images.append(image.split("/")[-1])
+            names_images.append(image.split("/")[-1] if image else None)
     news.images = names_images
     return news.images
 

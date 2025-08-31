@@ -24,7 +24,7 @@ async def get_content() -> Optional[SMainContent]:
         list[Products]: list of products
     """
     content = await MainContentDAO.get_all()
-    if content:
+    if content and content.images:
         content.images = content.images[0].split("/")[-1]
 
     return content
